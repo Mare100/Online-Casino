@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:online_casino/SecondPage.dart';
 import 'package:online_casino/ThirdPage.dart';
+import 'package:online_casino/coins.dart';
 import 'package:online_casino/counter.dart';
 
 
@@ -13,13 +14,14 @@ class FirstPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
+
     return Scaffold(
       appBar: AppBar(
           //centerTitle: true,
           title: const Text('Online Casino', style: TextStyle(fontSize: 30),),
           toolbarHeight: 100,
           actions: <Widget>[
-            Counter(),
+            Coins(),
             SizedBox(width: 20,)
           ],),
           drawer:

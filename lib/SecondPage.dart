@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:online_casino/FirstPage.dart';
 import 'package:online_casino/counter.dart';
+import 'package:online_casino/input.dart';
+import 'dice.dart';
 
 class SecondPage extends StatelessWidget {
   const SecondPage({super.key});
@@ -27,7 +29,7 @@ class SecondPage extends StatelessWidget {
         ],),
       body: Center(
         child:
-        Icon(Icons.check_box, size: 200),
+        IntInputExample(),
 
       ),
     );

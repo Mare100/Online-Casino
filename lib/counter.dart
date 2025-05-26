@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:online_casino/input.dart';
 import 'appState.dart';
 
 
@@ -18,19 +19,13 @@ class Counter extends StatefulWidget {
 
 class _CounterState extends State<Counter> {
 
-  void _refresh() {
-    final state = AppState();
-    setState(() {
-      state.sharedCounter++;
-      state.sharedCounter--;
-    });
-  }
 
 
   void _increment() {
+    //final marc = Input();
     final state = AppState();
     setState(() {
-      state.sharedCounter++;
+      state.sharedCounter = state.sharedCounter + 1;
     });
   }
 
@@ -39,6 +34,7 @@ class _CounterState extends State<Counter> {
 
     final state = AppState();
 
+
     return Row(
       children: [
         IconButton(
@@ -46,7 +42,7 @@ class _CounterState extends State<Counter> {
           icon:  Icon(Icons.currency_bitcoin),
           onPressed: () {
             _increment();
-            _refresh();
+
           },
         ),
         Text('${state.sharedCounter}'),
