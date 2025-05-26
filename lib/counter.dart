@@ -37,13 +37,16 @@ class _CounterState extends State<Counter> {
 
     return Row(
       children: [
-        IconButton(
-          iconSize: 35,
-          icon:  Icon(Icons.currency_bitcoin),
-          onPressed: () {
-            _increment();
-
-          },
+        ElevatedButton(
+          onPressed: _increment,
+          style: TextButton.styleFrom(
+            foregroundColor: Colors.black,
+            backgroundColor: Colors.lightBlueAccent,
+            textStyle: const TextStyle(
+              fontSize: 28,
+            ),
+          ),
+          child: const Text('Cash In'),
         ),
         Text('${state.sharedCounter}'),
       ],

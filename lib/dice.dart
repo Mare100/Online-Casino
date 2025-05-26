@@ -20,13 +20,22 @@ class _DiceRollerState extends State<DiceRoller> {
 
 
 
+  Widget check(){
+    if(widget.inputValue == 0) {
+      return Text("du must Geld setzen");
+    }else {
+      return Text("du hast ${widget.inputValue} gesetzt");
+    }
+  }
+
 
 
   void rollDice() {
-    setState(() {
-      currentDiceRoll = randomizer.nextInt(6) + 1;
-
-    });
+    if(widget.inputValue != 0) {
+      setState(() {
+        currentDiceRoll = randomizer.nextInt(6) + 1;
+      });
+    }
   }
 
 
@@ -67,9 +76,10 @@ class _DiceRollerState extends State<DiceRoller> {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
+        check(),
         show(),
         const SizedBox(height: 20),
-        TextButton(
+        ElevatedButton(
           onPressed: rollDice,
           style: TextButton.styleFrom(
             foregroundColor: Colors.black,

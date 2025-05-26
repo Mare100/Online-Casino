@@ -47,7 +47,6 @@ class _IntInputExampleState extends State<IntInputExample> {
               child: Text('Submit'),
             ),
             SizedBox(height: 20),
-            Text('You entered: $_inputValue'),
             DiceRoller(inputValue: _inputValue)
           ],
         ),
