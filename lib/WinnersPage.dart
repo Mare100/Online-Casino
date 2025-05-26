@@ -23,7 +23,7 @@ class SecondPage extends StatelessWidget {
             );
           },
         ),
-        title: const Text('Second Page'),
+        title: const Text('Winners Page'),
         actions: <Widget>[
           Coins(),
           SizedBox(width: 20,)

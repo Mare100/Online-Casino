@@ -10,8 +10,9 @@ class Counter extends StatefulWidget {
   // State. Fields in a Widget subclass are always marked
   // "final".
 
+  final int input;
 
-  const Counter({super.key});
+  const Counter({super.key,required this.input});
 
   @override
   State<Counter> createState() => _CounterState();
@@ -25,7 +26,7 @@ class _CounterState extends State<Counter> {
     //final marc = Input();
     final state = AppState();
     setState(() {
-      state.sharedCounter = state.sharedCounter + 1;
+      state.sharedCounter = state.sharedCounter +1;
     });
   }
 
@@ -36,16 +37,22 @@ class _CounterState extends State<Counter> {
 
 
     return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        IconButton(
-          iconSize: 35,
-          icon:  Icon(Icons.currency_bitcoin),
-          onPressed: () {
-            _increment();
+      TextButton(
+      onPressed: _increment,
+      style: TextButton.styleFrom(
+        foregroundColor: Colors.black,
+        backgroundColor: Colors.lightBlueAccent,
+        textStyle: const TextStyle(
+          fontSize: 28,
+        ),
+      ),
+      child: const Text('Cash In'),
 
-          },
         ),
         Text('${state.sharedCounter}'),
+
       ],
     );
   }

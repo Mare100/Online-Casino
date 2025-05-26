@@ -29,6 +29,7 @@ class _DiceRollerState extends State<DiceRoller> {
     });
   }
 
+
   Widget show(){
     if(currentDiceRoll == 1){
       return Image.asset('assets/images/dice1.png');
@@ -49,11 +50,17 @@ class _DiceRollerState extends State<DiceRoller> {
     }
   }
 
-  Widget win(){
-    if(currentDiceRoll == 1){
-      return Text('You entered: ${widget.inputValue}');
-    }else {return Text("verloren");}
-  }
+   Widget win() {
+     if (currentDiceRoll == 1) {
+       return Counter(input: widget.inputValue);
+     }else{
+       return Text("Leider Verloren");
+     }
+   }
+
+
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -74,7 +81,7 @@ class _DiceRollerState extends State<DiceRoller> {
           child: const Text('Roll Dice'),
         ),
         Text('Current number = $currentDiceRoll!'),
-        win(),
+        win()
       ],
     );
   }

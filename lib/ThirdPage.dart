@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:online_casino/FirstPage.dart';
 import 'package:online_casino/counter.dart';
 import 'package:online_casino/input.dart';
+import 'coins.dart';
 
 class ThirdRoute extends StatelessWidget {
   const ThirdRoute({super.key});
@@ -22,7 +23,7 @@ class ThirdRoute extends StatelessWidget {
         ),
         title: const Text('Third Page'),
         actions: <Widget>[
-          Counter(),
+          Coins(),
           SizedBox(width: 20,)
         ],),
       body: Center(
