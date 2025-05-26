@@ -1,10 +1,14 @@
 
 import 'package:flutter/material.dart';
 import 'package:online_casino/counter.dart';
+import 'dart:math';
+
+import 'package:online_casino/dice.dart';
 
 
 
-/*class IntInputExample extends StatefulWidget {
+
+class IntInputExample extends StatefulWidget {
   const IntInputExample({super.key});
 
   @override
@@ -16,9 +20,13 @@ class _IntInputExampleState extends State<IntInputExample> {
   int _inputValue = 0;
 
   void _submit() {
+
     setState(() {
       _inputValue = int.tryParse(_controller.text) ?? 0;
+
+
     });
+
   }
 
   @override
@@ -40,14 +48,18 @@ class _IntInputExampleState extends State<IntInputExample> {
             ),
             SizedBox(height: 20),
             Text('You entered: $_inputValue'),
-            ,
+            DiceRoller(inputValue: _inputValue)
           ],
         ),
       ),
     );
   }
-}*/
-
-class Input{
-  int input = 10;
 }
+
+
+
+
+
+
+
+

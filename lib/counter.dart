@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:online_casino/input.dart';
 import 'appState.dart';
 
 
@@ -21,9 +22,10 @@ class _CounterState extends State<Counter> {
 
 
   void _increment() {
+    //final marc = Input();
     final state = AppState();
     setState(() {
-      state.sharedCounter++;
+      state.sharedCounter = state.sharedCounter + 1;
     });
   }
 
@@ -31,6 +33,7 @@ class _CounterState extends State<Counter> {
   Widget build(BuildContext context) {
 
     final state = AppState();
+
 
     return Row(
       children: [
