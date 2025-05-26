@@ -28,25 +28,13 @@ class _CounterState extends State<Counter> {
       state.sharedCounter = state.sharedCounter + widget.input;
     });
   }
+  Widget count(){
+    final state = new AppState();
+    return Text('${state.sharedCounter}');
+  }
 
   @override
   Widget build(BuildContext context) {
-
-    final state = AppState();
-
-
-    return Row(
-      children: [
-        IconButton(
-          iconSize: 35,
-          icon:  Icon(Icons.currency_bitcoin),
-          onPressed: () {
-            _increment();
-
-          },
-        ),
-        Text('${state.sharedCounter}'),
-      ],
-    );
+       return count();
   }
 }
