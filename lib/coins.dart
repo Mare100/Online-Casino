@@ -7,6 +7,7 @@ class Coins extends StatelessWidget {
 
   const Coins({super.key});
 
+
   @override
 
   Widget build(BuildContext context) {
