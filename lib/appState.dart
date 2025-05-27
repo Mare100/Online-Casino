@@ -10,4 +10,5 @@ class AppState {
   AppState._internal();
 
   int sharedCounter = 0;
+  int choice=0;
 }

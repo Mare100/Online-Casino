@@ -9,9 +9,9 @@ class Counter extends StatefulWidget {
   // by the parent and used by the build  method of the
   // State. Fields in a Widget subclass are always marked
   // "final".
+  final int input;
 
-
-  const Counter({super.key});
+  const Counter({super.key, required this.input});
 
   @override
   State<Counter> createState() => _CounterState();
@@ -25,28 +25,16 @@ class _CounterState extends State<Counter> {
     //final marc = Input();
     final state = AppState();
     setState(() {
-      state.sharedCounter = state.sharedCounter + 1;
+      state.sharedCounter = state.sharedCounter + widget.input;
     });
+  }
+  Widget count(){
+    final state = new AppState();
+    return Text('${state.sharedCounter}');
   }
 
   @override
   Widget build(BuildContext context) {
-
-    final state = AppState();
-
-
-    return Row(
-      children: [
-        IconButton(
-          iconSize: 35,
-          icon:  Icon(Icons.currency_bitcoin),
-          onPressed: () {
-            _increment();
-
-          },
-        ),
-        Text('${state.sharedCounter}'),
-      ],
-    );
+       return count();
   }
 }

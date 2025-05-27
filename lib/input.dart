@@ -1,4 +1,5 @@
 
+
 import 'package:flutter/material.dart';
 import 'package:online_casino/counter.dart';
 import 'dart:math';
@@ -31,11 +32,7 @@ class _IntInputExampleState extends State<IntInputExample> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
+    return Column(
           children: [
             TextField(
               controller: _controller,
@@ -47,19 +44,9 @@ class _IntInputExampleState extends State<IntInputExample> {
               child: Text('Submit'),
             ),
             SizedBox(height: 20),
-            Text('You entered: $_inputValue'),
-            DiceRoller(inputValue: _inputValue)
+            //DiceRoller(inputValue: _inputValue)
           ],
-        ),
-      ),
+
     );
   }
 }
-
-
-
-
-
-
-
-
