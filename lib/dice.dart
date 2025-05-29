@@ -19,7 +19,7 @@ class DiceRoller extends StatefulWidget {
 class _DiceRollerState extends State<DiceRoller> {
   int currentDiceRoll = 2;
   int choice=0;
-
+  bool isButtonActive = true;
 
   final TextEditingController _controller = TextEditingController();
   int input = 0;
@@ -44,22 +44,22 @@ class _DiceRollerState extends State<DiceRoller> {
   }
 
 
-  void _increment() {
-    //final marc = Input();
+
+
+  void roleDice() {
     final state = AppState();
-    setState(() {
-      state.sharedCounter = state.sharedCounter + input;
-    });
-  }
-
-
-  void rollDice() {
     if(input != 0) {
-      setState(() {
-        currentDiceRoll = randomizer.nextInt(5) + 1;
-      });
+      if(choice != 0) {
+        setState(() {
+          currentDiceRoll = randomizer.nextInt(6) + 1;
+          state.sharedCounter = state.sharedCounter - input;
+          isButtonActive = true;
+        });
+      }
     }
   }
+
+
 
 
   Widget show(){
@@ -84,19 +84,30 @@ class _DiceRollerState extends State<DiceRoller> {
   }
 
   Widget win() {
+    final state = AppState();
 
     if(choice== 0  ){
-      return Text("Auf Welche Zahl setzt du");
+      return Text("");
     }else
       if(input== 0  ){
-        return Text("Wie viel setzt du");
+        return Text("");
     }else{
       if (currentDiceRoll == choice) {
-        return Row(
+        return
+          SizedBox(
+            height: 50,
+            child:
+          Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             ElevatedButton(
-              onPressed: _increment,
+              onPressed: isButtonActive
+                  ? () {
+                setState(() {
+                  state.sharedCounter = state.sharedCounter + input*6; // Coins Counter erhöhen
+                  isButtonActive = false; //Button deaktivieren, damit nur 1 mal Coins eingelöst werden können;
+                });
+              }: null,
               style: TextButton.styleFrom(
                 foregroundColor: Colors.black,
                 backgroundColor: Colors.lightBlueAccent,
@@ -108,16 +119,19 @@ class _DiceRollerState extends State<DiceRoller> {
             ),
 
           ],
-        );
+          ));
       } else {
-        return Text("Leider Verloren");
+        return SizedBox(
+          height: 50,
+          child: Text(""));
       }
     }
   }
 
   Widget inputForm(){
     return
-      Column(
+
+    Column(
           mainAxisSize: MainAxisSize.min,
           children: [
       Padding(
@@ -127,6 +141,10 @@ class _DiceRollerState extends State<DiceRoller> {
       SizedBox(height: 30,),
       diceButtons(),
     SizedBox(height: 30,),
+        SizedBox(
+          width: 300,
+          child:
+              Column(children: [
     TextField(
     controller: _controller,
     decoration: InputDecoration(labelText: 'Wie viel setzt du?'),
@@ -137,7 +155,7 @@ class _DiceRollerState extends State<DiceRoller> {
     child: Text('Submit'),
     ),
     SizedBox(height: 20),
-
+       ]) )
     ],
     ),
     )
@@ -224,18 +242,19 @@ class _DiceRollerState extends State<DiceRoller> {
       ),
       title: const Text('Second Page'),
       actions: <Widget>[
+        Icon(Icons.currency_bitcoin),
         Text("${state.sharedCounter}"),
         SizedBox(width: 20,)
       ],),
     body:
         Column(
         children: [
-
-        check(),
+        SizedBox(height: 60,),
+        //check(),
         show(),
         const SizedBox(height: 20),
         ElevatedButton(
-          onPressed: rollDice,
+          onPressed: roleDice,
           style: TextButton.styleFrom(
             foregroundColor: Colors.black,
             backgroundColor: Colors.lightBlueAccent,
@@ -243,12 +262,12 @@ class _DiceRollerState extends State<DiceRoller> {
               fontSize: 28,
             ),
           ),
-          child: const Text('Roll Dice'),
+          child: const Text('Role Dice'),
         ),
-        Text('Current number = $currentDiceRoll!'),
+        //Text('Current number = $currentDiceRoll!'),
         win(),
           inputForm(),
-          Text("${choice}"),
+          //Text("${choice}"),
         ]
         )
 
