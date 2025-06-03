@@ -20,6 +20,8 @@ class _DiceRollerState extends State<DiceRoller> {
   int currentDiceRoll = 2;
   int choice=0;
   bool isButtonActive = true;
+  Color _iconColor = Colors.black;
+
 
   final TextEditingController _controller = TextEditingController();
   int input = 0;
@@ -164,6 +166,12 @@ class _DiceRollerState extends State<DiceRoller> {
 
   }
 
+  void changeColor(){
+    setState(() {
+      _iconColor = Colors.grey;
+    });
+  }
+
 
   Widget diceButtons(){
     final state = AppState();
@@ -189,14 +197,17 @@ class _DiceRollerState extends State<DiceRoller> {
             _setChoice(3);          },
         ),
         IconButton(
-          icon: SizedBox(height: 45, child: Image.asset('assets/images/dice4.png')),
+          icon: SizedBox(height: 45, child: Image.asset('assets/images/dice4.png', color: _iconColor),),
           onPressed: () {
-            _setChoice(4);          },
+            _setChoice(4);
+            changeColor();
+          },
         ),
         IconButton(
           icon: SizedBox(height: 45, child: Image.asset('assets/images/dice5.png')),
           onPressed: () {
             _setChoice(5);
+
           },
         ),
         IconButton(
