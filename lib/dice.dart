@@ -17,9 +17,10 @@ class DiceRoller extends StatefulWidget {
 }
 
 class _DiceRollerState extends State<DiceRoller> {
-  int currentDiceRoll = 2;
+  int currentDiceRoll = 0;
   int choice = 0;
   bool isButtonActive = true;
+  int checkup =1;
 
   Color _iconColor1 = Colors.black;
   Color _iconColor2 = Colors.black;
@@ -57,12 +58,17 @@ class _DiceRollerState extends State<DiceRoller> {
           state.sharedCounter = state.sharedCounter - input;
           isButtonActive = true;
         });
+        _setCheckup_1();
       }
     }
   }
 
 
   Widget show() {
+    if (currentDiceRoll == 0) {
+      return SizedBox(
+          height: 200, child: Image.asset('assets/images/dice5.png'));//Startwert
+    }
     if (currentDiceRoll == 1) {
       return SizedBox(
           height: 200, child: Image.asset('assets/images/dice1.png'));
@@ -88,7 +94,7 @@ class _DiceRollerState extends State<DiceRoller> {
     }
   }
 
-  Widget win() {
+  Widget cashIn() {
     final state = AppState();
 
     if (choice == 0) {
@@ -96,7 +102,7 @@ class _DiceRollerState extends State<DiceRoller> {
     } else if (input == 0) {
       return Text("");
     } else {
-      if (currentDiceRoll == choice) {
+      if (currentDiceRoll == choice && checkup != 0) {
         return
           SizedBox(
               height: 50,
@@ -114,6 +120,7 @@ class _DiceRollerState extends State<DiceRoller> {
                             input * 6; // Coins Counter erhöhen
                         isButtonActive =
                         false; //Button deaktivieren, damit nur 1 mal Coins eingelöst werden können;
+                        currentDiceRoll = 0;
                       });
                     } : null,
                     style: TextButton.styleFrom(
@@ -198,6 +205,7 @@ class _DiceRollerState extends State<DiceRoller> {
                       'assets/images/dice1.png', color: _iconColor1)),
               onPressed: () {
                 _setChoice(1);
+                _setCheckup_0();
                 setState(() {
                   _iconColor1 = Colors.grey;
 
@@ -215,6 +223,7 @@ class _DiceRollerState extends State<DiceRoller> {
                       'assets/images/dice2.png', color: _iconColor2)),
               onPressed: () {
                 _setChoice(2);
+                _setCheckup_0();
                 setState(() {
                   _iconColor2 = Colors.grey;
 
@@ -232,6 +241,7 @@ class _DiceRollerState extends State<DiceRoller> {
                       'assets/images/dice3.png', color: _iconColor3)),
               onPressed: () {
                 _setChoice(3);
+                _setCheckup_0();
                 setState(() {
                   _iconColor3 = Colors.grey;
 
@@ -249,6 +259,7 @@ class _DiceRollerState extends State<DiceRoller> {
                     'assets/images/dice4.png', color: _iconColor4),),
               onPressed: () {
                 _setChoice(4);
+                _setCheckup_0();
                 setState(() {
                   _iconColor4 = Colors.grey;
 
@@ -266,6 +277,7 @@ class _DiceRollerState extends State<DiceRoller> {
                       'assets/images/dice5.png', color: _iconColor5)),
               onPressed: () {
                 _setChoice(5);
+                _setCheckup_0();
                 setState(() {
                   _iconColor5 = Colors.grey;
 
@@ -283,6 +295,7 @@ class _DiceRollerState extends State<DiceRoller> {
                       'assets/images/dice6.png', color: _iconColor6)),
               onPressed: () {
                 _setChoice(6);
+                _setCheckup_0();
                 setState(() {
                   _iconColor6 = Colors.grey;
 
@@ -293,6 +306,7 @@ class _DiceRollerState extends State<DiceRoller> {
                   _iconColor5 = Colors.black;
                 });
               },
+
             ),
 
           ],
@@ -301,10 +315,21 @@ class _DiceRollerState extends State<DiceRoller> {
       ],);
   }
 
-  _setChoice(int input) {
+  void _setChoice(int input) {
     final state = AppState();
     setState(() {
       choice = input;
+    });
+  }
+
+  void _setCheckup_0() {
+    setState(() {
+      checkup = 0;
+    });
+  }
+  void _setCheckup_1() {
+    setState(() {
+      checkup = 1;
     });
   }
 
@@ -350,7 +375,7 @@ class _DiceRollerState extends State<DiceRoller> {
                 child: const Text('Role Dice'),
               ),
 //Text('Current number = $currentDiceRoll!'),
-              win(),
+              cashIn(),
               inputForm(),
 //Text("${choice}"),
             ]
