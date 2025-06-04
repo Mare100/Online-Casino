@@ -111,7 +111,7 @@ class _DiceRollerState extends State<DiceRoller> {
                   ElevatedButton(
                     onPressed: isButtonActive
                         ? () {
-                      //setColorBack();
+                      setColorBack();
                       setState(() {
                         state.sharedCounter = state.sharedCounter + input*6; // Coins Counter erhöhen
                         isButtonActive = false; //Button deaktivieren, damit nur 1 mal Coins eingelöst werden können;
