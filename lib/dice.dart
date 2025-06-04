@@ -18,7 +18,7 @@ class DiceRoller extends StatefulWidget {
 
 class _DiceRollerState extends State<DiceRoller> {
   int currentDiceRoll = 2;
-  int choice=0;
+  int choice = 0;
   bool isButtonActive = true;
 
   Color _iconColor1 = Colors.black;
@@ -33,31 +33,25 @@ class _DiceRollerState extends State<DiceRoller> {
   int input = 0;
 
   void _submit() {
-
     setState(() {
       input = int.tryParse(_controller.text) ?? 0;
-
-
     });
-
   }
 
 
-  Widget check(){
-    if(input == 0) {
+  Widget check() {
+    if (input == 0) {
       return Text("du must Geld setzen");
-    }else {
+    } else {
       return Text("du hast $input gesetzt");
     }
   }
 
 
-
-
   void roleDice() {
     final state = AppState();
-    if(input != 0) {
-      if(choice != 0) {
+    if (input != 0) {
+      if (choice != 0) {
         setState(() {
           currentDiceRoll = randomizer.nextInt(6) + 1;
           state.sharedCounter = state.sharedCounter - input;
@@ -68,38 +62,40 @@ class _DiceRollerState extends State<DiceRoller> {
   }
 
 
-
-
-  Widget show(){
-    if(currentDiceRoll == 1){
-      return SizedBox(height: 200, child: Image.asset('assets/images/dice1.png'));
+  Widget show() {
+    if (currentDiceRoll == 1) {
+      return SizedBox(
+          height: 200, child: Image.asset('assets/images/dice1.png'));
     }
-    if(currentDiceRoll == 2){
-      return SizedBox(height: 200, child: Image.asset('assets/images/dice2.png'));
+    if (currentDiceRoll == 2) {
+      return SizedBox(
+          height: 200, child: Image.asset('assets/images/dice2.png'));
     }
-    if(currentDiceRoll == 3){
-      return SizedBox(height: 200, child: Image.asset('assets/images/dice3.png'));
+    if (currentDiceRoll == 3) {
+      return SizedBox(
+          height: 200, child: Image.asset('assets/images/dice3.png'));
     }
-    if(currentDiceRoll == 4){
-      return SizedBox(height: 200, child: Image.asset('assets/images/dice4.png'));
+    if (currentDiceRoll == 4) {
+      return SizedBox(
+          height: 200, child: Image.asset('assets/images/dice4.png'));
     }
-    if(currentDiceRoll == 5){
-      return SizedBox(height: 200, child: Image.asset('assets/images/dice5.png'));
-    }else
-    {
-      return SizedBox(height: 200, child: Image.asset('assets/images/dice6.png'));
+    if (currentDiceRoll == 5) {
+      return SizedBox(
+          height: 200, child: Image.asset('assets/images/dice5.png'));
+    } else {
+      return SizedBox(
+          height: 200, child: Image.asset('assets/images/dice6.png'));
     }
   }
 
   Widget win() {
     final state = AppState();
 
-    if(choice== 0  ){
+    if (choice == 0) {
       return Text("");
-    }else
-    if(input== 0  ){
+    } else if (input == 0) {
       return Text("");
-    }else{
+    } else {
       if (currentDiceRoll == choice) {
         return
           SizedBox(
@@ -114,10 +110,12 @@ class _DiceRollerState extends State<DiceRoller> {
                       setColorBack();
                       //setColorBack();
                       setState(() {
-                        state.sharedCounter = state.sharedCounter + input*6; // Coins Counter erhöhen
-                        isButtonActive = false; //Button deaktivieren, damit nur 1 mal Coins eingelöst werden können;
+                        state.sharedCounter = state.sharedCounter +
+                            input * 6; // Coins Counter erhöhen
+                        isButtonActive =
+                        false; //Button deaktivieren, damit nur 1 mal Coins eingelöst werden können;
                       });
-                    }: null,
+                    } : null,
                     style: TextButton.styleFrom(
                       foregroundColor: Colors.black,
                       backgroundColor: Colors.lightBlueAccent,
@@ -138,7 +136,7 @@ class _DiceRollerState extends State<DiceRoller> {
     }
   }
 
-  Widget inputForm(){
+  Widget inputForm() {
     return
 
       Column(
@@ -157,7 +155,8 @@ class _DiceRollerState extends State<DiceRoller> {
                       Column(children: [
                         TextField(
                           controller: _controller,
-                          decoration: InputDecoration(labelText: 'Wie viel setzt du?'),
+                          decoration: InputDecoration(
+                              labelText: 'Wie viel setzt du?'),
                         ),
                         SizedBox(height: 20),
                         ElevatedButton(
@@ -165,15 +164,15 @@ class _DiceRollerState extends State<DiceRoller> {
                           child: Text('Submit'),
                         ),
                         SizedBox(height: 20),
-                      ]) )
+                      ]))
                 ],
               ),
             )
           ]
       );
-
   }
-  void setColorBack(){
+
+  void setColorBack() {
     setState(() {
       _iconColor1 = Colors.black;
       _iconColor2 = Colors.black;
@@ -185,9 +184,7 @@ class _DiceRollerState extends State<DiceRoller> {
   }
 
 
-
-
-  Widget diceButtons(){
+  Widget diceButtons() {
     final state = AppState();
     return
       Column(children: [
@@ -196,7 +193,9 @@ class _DiceRollerState extends State<DiceRoller> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             IconButton(
-              icon: SizedBox(height: 45, child: Image.asset('assets/images/dice1.png', color: _iconColor1)),
+              icon: SizedBox(height: 45,
+                  child: Image.asset(
+                      'assets/images/dice1.png', color: _iconColor1)),
               onPressed: () {
                 _setChoice(1);
                 setState(() {
@@ -211,7 +210,9 @@ class _DiceRollerState extends State<DiceRoller> {
               },
             ),
             IconButton(
-              icon: SizedBox(height: 45, child: Image.asset('assets/images/dice2.png', color: _iconColor2)),
+              icon: SizedBox(height: 45,
+                  child: Image.asset(
+                      'assets/images/dice2.png', color: _iconColor2)),
               onPressed: () {
                 _setChoice(2);
                 setState(() {
@@ -226,7 +227,9 @@ class _DiceRollerState extends State<DiceRoller> {
               },
             ),
             IconButton(
-              icon: SizedBox(height: 45, child: Image.asset('assets/images/dice3.png', color: _iconColor3)),
+              icon: SizedBox(height: 45,
+                  child: Image.asset(
+                      'assets/images/dice3.png', color: _iconColor3)),
               onPressed: () {
                 _setChoice(3);
                 setState(() {
@@ -241,7 +244,9 @@ class _DiceRollerState extends State<DiceRoller> {
               },
             ),
             IconButton(
-              icon: SizedBox(height: 45, child: Image.asset('assets/images/dice4.png', color: _iconColor4),),
+              icon: SizedBox(height: 45,
+                child: Image.asset(
+                    'assets/images/dice4.png', color: _iconColor4),),
               onPressed: () {
                 _setChoice(4);
                 setState(() {
@@ -256,7 +261,9 @@ class _DiceRollerState extends State<DiceRoller> {
               },
             ),
             IconButton(
-              icon: SizedBox(height: 45, child: Image.asset('assets/images/dice5.png',color: _iconColor5)),
+              icon: SizedBox(height: 45,
+                  child: Image.asset(
+                      'assets/images/dice5.png', color: _iconColor5)),
               onPressed: () {
                 _setChoice(5);
                 setState(() {
@@ -268,11 +275,12 @@ class _DiceRollerState extends State<DiceRoller> {
                   _iconColor4 = Colors.black;
                   _iconColor6 = Colors.black;
                 });
-
               },
             ),
             IconButton(
-              icon: SizedBox(height: 45, child: Image.asset('assets/images/dice6.png', color: _iconColor6)),
+              icon: SizedBox(height: 45,
+                  child: Image.asset(
+                      'assets/images/dice6.png', color: _iconColor6)),
               onPressed: () {
                 _setChoice(6);
                 setState(() {
@@ -293,20 +301,16 @@ class _DiceRollerState extends State<DiceRoller> {
       ],);
   }
 
-  _setChoice(int input){
+  _setChoice(int input) {
     final state = AppState();
     setState(() {
       choice = input;
     });
-
   }
-
-
 
 
   @override
   Widget build(BuildContext context) {
-
     final state = AppState();
 
     return Scaffold(
@@ -354,3 +358,4 @@ class _DiceRollerState extends State<DiceRoller> {
 
     );
   }
+}
