@@ -1,7 +1,5 @@
 import 'dart:math';
-import 'counter.dart';
 import 'package:flutter/material.dart';
-import 'input.dart';
 import 'appState.dart';
 import 'package:online_casino/FirstPage.dart';
 
@@ -192,7 +190,6 @@ class _DiceRollerState extends State<DiceRoller> {
 
 
   Widget diceButtons() {
-    final state = AppState();
     return
       Column(children: [
         Text("Wähle eine Zahl auf die du dein Geld setzt"),
@@ -316,7 +313,6 @@ class _DiceRollerState extends State<DiceRoller> {
   }
 
   void _setChoice(int input) {
-    final state = AppState();
     setState(() {
       choice = input;
     });
