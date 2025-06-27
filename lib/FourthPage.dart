@@ -12,13 +12,13 @@ class ThirdPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-  return Scaffold(
+    return Scaffold(
 
-  body: Center(
-  child:
-  Roulette(),
+      body: Center(
+        child:
+        Roulette(),
 
-  ),
-  );
+      ),
+    );
   }
-  }
+}
