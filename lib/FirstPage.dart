@@ -4,6 +4,7 @@ import 'package:online_casino/ThirdPage.dart';
 import 'package:online_casino/coins.dart';
 import 'package:online_casino/counter.dart';
 import 'roulette.dart';
+import 'storageHelper.dart';
 
 
 
@@ -14,6 +15,8 @@ class FirstPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+      StorageHelper.loadCounter();
 
 
     return Scaffold(

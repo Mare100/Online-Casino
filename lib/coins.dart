@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'counter.dart';
 import 'appState.dart';
+import 'storageHelper.dart';
 
 class Coins extends StatelessWidget {
 
@@ -11,6 +12,8 @@ class Coins extends StatelessWidget {
   @override
 
   Widget build(BuildContext context) {
+    StorageHelper.loadCounter();
+
     final state = AppState();
     return
     Row(

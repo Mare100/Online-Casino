@@ -2,6 +2,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'appState.dart';
 import 'package:online_casino/FirstPage.dart';
+import 'storageHelper.dart';
 
 final randomizer = Random();
 
@@ -38,13 +39,13 @@ class _DiceRollerState extends State<DiceRoller> {
   }
 
 
-  Widget check() {
+  /*Widget check() {
     if (input == 0) {
       return Text("du must Geld setzen");
     } else {
       return Text("du hast $input gesetzt");
     }
-  }
+  }*/
 
 
   void roleDice() {
@@ -54,6 +55,7 @@ class _DiceRollerState extends State<DiceRoller> {
         setState(() {
           currentDiceRoll = randomizer.nextInt(6) + 1;
           state.sharedCounter = state.sharedCounter - input;
+          StorageHelper.saveCounter();
           isButtonActive = true;
         });
         _setCheckup_1();
@@ -114,6 +116,7 @@ class _DiceRollerState extends State<DiceRoller> {
                       setColorBack();
                       //setColorBack();
                       setState(() {
+                        StorageHelper.saveCounter();
                         state.sharedCounter = state.sharedCounter +
                             input * 6; // Coins Counter erhöhen
                         isButtonActive =
@@ -312,7 +315,7 @@ class _DiceRollerState extends State<DiceRoller> {
     });
   }
 
-  void _setCheckup_0() { //Verhindert dass die gewählte Zahl nach dem Würfeln nochmal gewexchselt werden kann
+  void _setCheckup_0() { //Verhindert dass die gewählte Zahl nach dem Würfeln nochmal gewechselt werden kann
     setState(() {
       checkup = 0;
     });

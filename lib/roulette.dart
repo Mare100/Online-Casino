@@ -2,6 +2,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_fortune_wheel/flutter_fortune_wheel.dart';
+import 'package:online_casino/storageHelper.dart';
 import 'appState.dart';
 import 'FirstPage.dart';
 
@@ -174,6 +175,7 @@ class _RouletteState extends State<Roulette> {
                       isButtonActive =
                       false; //Button deaktivieren, damit nur 1 mal Coins eingelöst werden können;
                       currentDiceRoll = 0;
+                      StorageHelper.saveCounter();
                     });
                   } : null,
 
@@ -197,6 +199,8 @@ class _RouletteState extends State<Roulette> {
     _setCheckup_1();
       setState(() {
         isButtonActive = true;
+        StorageHelper.saveCounter();
+
       });
       selected.add(index);
       setState(() {
