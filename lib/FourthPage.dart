@@ -6,8 +6,8 @@ import 'package:online_casino/roulette.dart';
 import 'coins.dart';
 import 'roulette.dart';
 
-class ThirdPage extends StatelessWidget {
-  const ThirdPage({super.key});
+class FourthPage extends StatelessWidget {
+  const FourthPage({super.key});
 
   @override
   Widget build(BuildContext context) {

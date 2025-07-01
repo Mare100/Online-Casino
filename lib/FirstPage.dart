@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:online_casino/FourthPage.dart';
 import 'package:online_casino/SecondPage.dart';
 import 'package:online_casino/ThirdPage.dart';
 import 'package:online_casino/coins.dart';
@@ -105,7 +106,10 @@ class FirstPage extends StatelessWidget {
                     iconSize: 175,
                     icon:  Icon(Icons.casino),
                     onPressed: () {
-
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) =>  const FourthPage()),
+                      );
                     },
                   ),
                   IconButton(
