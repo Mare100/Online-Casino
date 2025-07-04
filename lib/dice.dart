@@ -18,7 +18,8 @@ class DiceRoller extends StatefulWidget {
 class _DiceRollerState extends State<DiceRoller> {
   int currentDiceRoll = 0;
   int choice = 0;
-  bool isButtonActive = true;
+  bool isButtonActiveCash = false;
+  bool isButtonActiveRole = true;
   int checkup =1;
 
   Color _iconColor1 = Colors.black;
@@ -56,7 +57,8 @@ class _DiceRollerState extends State<DiceRoller> {
           currentDiceRoll = randomizer.nextInt(6) + 1;
           state.sharedCounter = state.sharedCounter - input;
           StorageHelper.saveCounter();
-          isButtonActive = true;
+          if (currentDiceRoll == choice && checkup != 0) isButtonActiveCash = true;
+          if (currentDiceRoll == choice && checkup != 0) isButtonActiveRole = false;
         });
         _setCheckup_1();
       }
@@ -97,12 +99,7 @@ class _DiceRollerState extends State<DiceRoller> {
   Widget cashIn() {
     final state = AppState();
 
-    if (choice == 0) {
-      return Text("");
-    } else if (input == 0) {
-      return Text("");
-    } else {
-      if (currentDiceRoll == choice && checkup != 0) {
+
         return
           SizedBox(
               height: 50,
@@ -111,7 +108,7 @@ class _DiceRollerState extends State<DiceRoller> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   ElevatedButton(
-                    onPressed: isButtonActive
+                    onPressed: isButtonActiveCash
                         ? () {
                       setColorBack();
                       //setColorBack();
@@ -119,9 +116,10 @@ class _DiceRollerState extends State<DiceRoller> {
                         StorageHelper.saveCounter();
                         state.sharedCounter = state.sharedCounter +
                             input * 6; // Coins Counter erhöhen
-                        isButtonActive =
+                        isButtonActiveCash =
                         false; //Button deaktivieren, damit nur 1 mal Coins eingelöst werden können;
                         currentDiceRoll = 0;
+                        isButtonActiveRole = true;
                       });
                     } : null,
 
@@ -130,12 +128,7 @@ class _DiceRollerState extends State<DiceRoller> {
 
                 ],
               ));
-      } else {
-        return SizedBox(
-            height: 50,
-            child: Text(""));
-      }
-    }
+
   }
 
   Widget inputForm() {
@@ -327,6 +320,8 @@ class _DiceRollerState extends State<DiceRoller> {
   }
 
 
+
+
   @override
   Widget build(BuildContext context) {
     final state = AppState();
@@ -357,7 +352,15 @@ class _DiceRollerState extends State<DiceRoller> {
               show(),
               const SizedBox(height: 20),
               ElevatedButton(
-                onPressed: roleDice,
+                onPressed: isButtonActiveRole
+                    ? () {
+                  roleDice();
+                  //setColorBack();
+                  setState(() {
+                    StorageHelper.saveCounter();
+                  });
+
+                } : null,
 
                 child: const Text('Role Dice'),
               ),
