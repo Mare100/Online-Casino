@@ -14,7 +14,8 @@ class Roulette extends StatefulWidget {
 class _RouletteState extends State<Roulette> {
   int currentDiceRoll = 0;
   String choice = "";
-  bool isButtonActive = true;
+  bool isButtonActive = false;
+  bool isSpin = false;
   int checkup = 1;
 
 
@@ -87,18 +88,18 @@ class _RouletteState extends State<Roulette> {
             ),
             Container(
               decoration:  BoxDecoration(
-                border: Border.all(color: Color(color2))
+                  border: Border.all(color: Color(color2))
               ),
               child:IconButton(
-              iconSize: 50,
-              icon: Icon(Icons.circle, color: Color(0xFF6450a6),),
-              onPressed: () {
-                _setChoice("1");
-                color2 = 0xFF000000;
-                color1 =0;
-                _setCheckup_0();
-              },
-            ),
+                iconSize: 50,
+                icon: Icon(Icons.circle, color: Color(0xFF6450a6),),
+                onPressed: () {
+                  _setChoice("1");
+                  color2 = 0xFF000000;
+                  color1 =0;
+                  _setCheckup_0();
+                },
+              ),
             ),
 
           ],
@@ -158,33 +159,33 @@ class _RouletteState extends State<Roulette> {
       return Text("");
     } else {*/
 
-      return
-        SizedBox(
-            height: 50,
-            child:
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                ElevatedButton(
-                  onPressed: isButtonActive
-                      ? () {
-                    //setColorBack();
-                    setState(() {
+    return
+      SizedBox(
+          height: 50,
+          child:
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              ElevatedButton(
+                onPressed:
+                isButtonActive
+                    ? () {
+                  //setColorBack();
+                  setState(() {
                     if (selectedName == choice && checkup != 0) {
                       state.sharedCounter = state.sharedCounter + input * 2; }// Coins Counter erhöhen
-                      isButtonActive =
-                      false; //Button deaktivieren, damit nur 1 mal Coins eingelöst werden können;
-                      currentDiceRoll = 0;
-                      StorageHelper.saveCounter();
-                    });
-                  } : null,
+                    isButtonActive = false; //Button deaktivieren, damit nur 1 mal Coins eingelöst werden können;
+                    currentDiceRoll = 0;
+                    StorageHelper.saveCounter();
+                  });
+                } : null,
 
 
-                  child: const Text('Cash In'),
-                ),
+                child: const Text('Cash In'),
+              ),
 
-              ],
-            ));
+            ],
+          ));
 
   }
 
@@ -197,23 +198,21 @@ class _RouletteState extends State<Roulette> {
     state.sharedCounter = state.sharedCounter - input;
     final index = Fortune.randomInt(0, items.length);
     _setCheckup_1();
-      setState(() {
-        isButtonActive = true;
-        StorageHelper.saveCounter();
 
-      });
-      selected.add(index);
+    selected.add(index);
+    setState(() {
+      isSpinning = true;
+      selectedName = null;
+    });
+    Future.delayed(Duration(seconds: 4), () {
       setState(() {
-        isSpinning = true;
-        selectedName = null;
+        selectedName = items[index];
+        isSpinning = false;
+        if(selectedName == choice) isButtonActive = true;
       });
-      Future.delayed(Duration(seconds: 4), () {
-        setState(() {
-          selectedName = items[index];
-          isSpinning = false;
-        });
-      });
-    }
+    });
+  }
+
 
 
 
@@ -264,10 +263,10 @@ class _RouletteState extends State<Roulette> {
           SizedBox(height: 20),
           cashIn(),
           //if (selectedName != null)
-            //Text(
-              //'Gewonnen: $selectedName',
-              //style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-            //),
+          //Text(
+          //'Gewonnen: $selectedName',
+          //style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+          //),
           chooseColor(),
           inputForm(),
         ],
