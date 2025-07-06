@@ -5,6 +5,7 @@ import 'package:online_casino/input.dart';
 import 'package:online_casino/roulette.dart';
 import 'coins.dart';
 import 'roulette.dart';
+import 'Keno.dart';
 
 class FourthPage extends StatelessWidget {
   const FourthPage({super.key});
@@ -16,7 +17,7 @@ class FourthPage extends StatelessWidget {
 
       body: Center(
         child:
-        Roulette(),
+        Keno(),
 
       ),
     );

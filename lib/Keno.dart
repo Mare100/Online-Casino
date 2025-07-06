@@ -27,7 +27,10 @@ class _KenoState extends State<Keno> {
 
   int currentDiceRoll = 0;
   String choice = "";
-  bool isButtonActive = true;
+
+  bool isButtonActiveCash = false;
+  bool isButtonActiveGenerate = true;
+
   int checkup = 1;
 
   List<int> gezogeneZahlen = [];
@@ -42,19 +45,14 @@ class _KenoState extends State<Keno> {
     return numbers.toList();
   }
 
-  int getWinValue() {
-    return win;
-  }
+
 
 
   void generate() {
     setState(() {
       gezogeneZahlen = generateFiveRandomNumbers();
     });
-    setState(() {
-      isButtonActive = true;
-      StorageHelper.saveCounter();
-    });
+
     final state = AppState();
     state.sharedCounter = state.sharedCounter - input;
 
@@ -74,6 +72,13 @@ class _KenoState extends State<Keno> {
         win = 0;
       });
     }
+    setState(() {
+      if(win >= 1){
+        isButtonActiveCash = true;
+        isButtonActiveGenerate = false;
+      }
+      StorageHelper.saveCounter();
+    });
   }
 
   void _submit() {
@@ -112,7 +117,7 @@ class _KenoState extends State<Keno> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             ElevatedButton(
-              onPressed: isButtonActive
+              onPressed: isButtonActiveCash
                   ? () {
                 setState(() {
                   if (win == 1) {
@@ -121,11 +126,11 @@ class _KenoState extends State<Keno> {
                   if (win == 2) {
                     state.sharedCounter += input * 10;
                   }
-                  isButtonActive = false;
+                  isButtonActiveCash = false;
+                  isButtonActiveGenerate = true;
                   StorageHelper.saveCounter();
                 });
-              }
-                  : null,
+              } : null,
               child: const Text('Cash In'),
             ),
           ],
@@ -177,13 +182,16 @@ class _KenoState extends State<Keno> {
                     ),
                     SizedBox(height: 20),
                     ElevatedButton(
-                      onPressed: generate,
-                      child: Text('generate'),
+                       onPressed: isButtonActiveGenerate
+                        ? () {
+                          generate();
+                          } : null,
+                      child: Text('Generate'),
                     ),
                     SizedBox(height: 20),
                     printGezogeneZahlen(),
                     cashIn(),
-                    Text('Gewinnstufe: ${getWinValue()}')
+                    Text('Gewinnstufe: $win')
 
                   ],
                 ),

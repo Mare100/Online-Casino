@@ -33,9 +33,35 @@ class _DiceRollerState extends State<DiceRoller> {
   final TextEditingController _controller = TextEditingController();
   int input = 0;
 
-  void _submit() {
+  void _submit() { //Verarbeitet die eingaben
     setState(() {
       input = int.tryParse(_controller.text) ?? 0;
+      checkInput();
+    });
+  }
+
+  void checkInput(){ // Checkt ob die Inpit Forms ausgefüllt dsind und gibt dem USer Rückmeldung was fehlt
+    setState(() {
+      if (choice == 0 && input<= 0) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Bitte wählen sie eine Zahl auf die Sie setzen und geben Sie einen gültigen Einsatz an')),
+        );
+        return;
+      }
+
+      if (choice == 0) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Bitte wählen sie eine Zahl auf die Sie setzen')),
+        );
+        return;
+      }
+
+      if (input <= 0) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Bitte geben Sie einen gültigen Einsatz ein.')),
+        );
+        return;
+      }
     });
   }
 
@@ -49,16 +75,17 @@ class _DiceRollerState extends State<DiceRoller> {
   }*/
 
 
-  void roleDice() {
+  void roleDice() { // erstellt Zufallszahl 1-6 für den Würfel und zieht einsatz voM Vermögen ab
     final state = AppState();
+    checkInput();
     if (input != 0) {
       if (choice != 0) {
         setState(() {
-          currentDiceRoll = randomizer.nextInt(6) + 1;
-          state.sharedCounter = state.sharedCounter - input;
-          StorageHelper.saveCounter();
-          if (currentDiceRoll == choice && checkup != 0) isButtonActiveCash = true;
-          if (currentDiceRoll == choice && checkup != 0) isButtonActiveRole = false;
+          currentDiceRoll = randomizer.nextInt(6) + 1;//erstellt Zufallszahl 1-6 für den Würfel
+          state.sharedCounter = state.sharedCounter - input; //zieht einsatz voM Vermögen ab
+          StorageHelper.saveCounter(); // persistente Datenspeicherung
+          if (currentDiceRoll == choice && checkup != 0) isButtonActiveCash = true; //Aktiviert Cash IN Button
+          if (currentDiceRoll == choice && checkup != 0) isButtonActiveRole = false;// Deaktiviert Role Dice Button
         });
         _setCheckup_1();
       }
@@ -70,10 +97,13 @@ class _DiceRollerState extends State<DiceRoller> {
     if (currentDiceRoll == 0) {
       return SizedBox(
           height: 200, child: Image.asset('assets/images/dice5.png'));//Startwert
-    }
-    if (currentDiceRoll == 1) {
+    }else{
       return SizedBox(
-          height: 200, child: Image.asset('assets/images/dice1.png'));
+        height: 200, child: Image.asset('assets/images/dice$currentDiceRoll.png'));// schönere Lösung
+    }
+   /* if (currentDiceRoll == 1) {//Alte Lösung (unschön)
+      return SizedBox(
+          height: 200, child: Image.asset('assets/images/dice$currentDiceRoll.png'));
     }
     if (currentDiceRoll == 2) {
       return SizedBox(
@@ -93,7 +123,7 @@ class _DiceRollerState extends State<DiceRoller> {
     } else {
       return SizedBox(
           height: 200, child: Image.asset('assets/images/dice6.png'));
-    }
+    }*/
   }
 
   Widget cashIn() {
@@ -110,14 +140,11 @@ class _DiceRollerState extends State<DiceRoller> {
                   ElevatedButton(
                     onPressed: isButtonActiveCash
                         ? () {
-                      setColorBack();
-                      //setColorBack();
                       setState(() {
                         StorageHelper.saveCounter();
                         state.sharedCounter = state.sharedCounter +
                             input * 6; // Coins Counter erhöhen
-                        isButtonActiveCash =
-                        false; //Button deaktivieren, damit nur 1 mal Coins eingelöst werden können;
+                        isButtonActiveCash = false; //Button deaktivieren, damit nur 1 mal Coins eingelöst werden können;
                         currentDiceRoll = 0;
                         isButtonActiveRole = true;
                       });
