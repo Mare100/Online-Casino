@@ -177,6 +177,7 @@ class _RouletteState extends State<Roulette> {
                     isButtonActive = false; //Button deaktivieren, damit nur 1 mal Coins eingelöst werden können;
                     currentDiceRoll = 0;
                     StorageHelper.saveCounter();
+                    isSpinning = false;
                   });
                 } : null,
 
@@ -204,10 +205,10 @@ class _RouletteState extends State<Roulette> {
       isSpinning = true;
       selectedName = null;
     });
-    Future.delayed(Duration(seconds: 4), () {
+    Future.delayed(Duration(seconds: 5), () {
       setState(() {
         selectedName = items[index];
-        isSpinning = false;
+        if(choice!= selectedName)isSpinning = false;
         if(selectedName == choice) isButtonActive = true;
       });
     });

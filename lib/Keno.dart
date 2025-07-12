@@ -39,7 +39,7 @@ class _KenoState extends State<Keno> {
   List<int> generateFiveRandomNumbers() {
     final random = Random();
     final Set<int> numbers = {};
-    while (numbers.length < 5) {
+    while (numbers.length < 10) {
       numbers.add(random.nextInt(70) + 1);
     }
     return numbers.toList();
@@ -106,7 +106,11 @@ class _KenoState extends State<Keno> {
   }
 
   Widget printGezogeneZahlen() {
-    return Text('Gezogene Zahlen: ${gezogeneZahlen.join(', ')}');
+    return Text(
+      style: TextStyle(fontSize: 18),
+      'Gezogene Zahlen:\n${gezogeneZahlen.join(', ')}\n\nGewinnstufe:  $win',
+
+     );
   }
 
   Widget cashIn() {
@@ -121,10 +125,10 @@ class _KenoState extends State<Keno> {
                   ? () {
                 setState(() {
                   if (win == 1) {
-                    state.sharedCounter += input * 5;
+                    state.sharedCounter += input * 4;
                   }
                   if (win == 2) {
-                    state.sharedCounter += input * 10;
+                    state.sharedCounter += input * 8;
                   }
                   isButtonActiveCash = false;
                   isButtonActiveGenerate = true;
@@ -145,6 +149,13 @@ class _KenoState extends State<Keno> {
           padding: const EdgeInsets.all(16.0),
           child: Column(
             children: [
+              SizedBox(height: 30),
+              SizedBox(
+                  height: 150,
+                  child: Image.asset('assets/images/Keno.png')
+              ),
+              SizedBox(height: 30),
+              printGezogeneZahlen(),
               SizedBox(height: 30),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -189,9 +200,9 @@ class _KenoState extends State<Keno> {
                       child: Text('Generate'),
                     ),
                     SizedBox(height: 20),
-                    printGezogeneZahlen(),
+
                     cashIn(),
-                    Text('Gewinnstufe: $win')
+
 
                   ],
                 ),
