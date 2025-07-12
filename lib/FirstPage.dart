@@ -40,7 +40,7 @@ class FirstPage extends StatelessWidget {
                    height: 120, // Set your desired height here
                       child: DrawerHeader(
                        decoration: BoxDecoration(
-                        color: Colors.blue,
+                        color: Color(0xFFaf7ac5),
                        ),
                         child: Text('Einstellungen',
                           style: TextStyle(fontSize: 25),),
@@ -48,13 +48,13 @@ class FirstPage extends StatelessWidget {
                   ),
 
             ListTile(
-                    title: const Text('Item 1'),
+                    title: const Text('LOG IN'),
                     onTap: () {
 
                     },
                   ),
                   ListTile(
-                    title: const Text('Item 2'),
+                    title: const Text('Einstellungen'),
                     onTap: () {
                       // Update the state of the app.
                       // ...

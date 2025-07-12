@@ -17,6 +17,7 @@ class _RouletteState extends State<Roulette> {
   bool isButtonActive = false;
   bool isSpin = false;
   int checkup = 1;
+  bool inputCheck = false;
 
 
   final StreamController<int> selected = StreamController<int>();
@@ -34,10 +35,31 @@ class _RouletteState extends State<Roulette> {
   final TextEditingController _controller = TextEditingController();
   int input = 0;
 
+  void checkInput(){
+    if (choice == "" ) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Bitte wählen Sie eine Farbe')),
+      );
+      inputCheck = false;
+      return;
+    }
+
+    if (input <= 0) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Bitte geben Sie einen gültigen Einsatz ein und klicken anschließend auf Submit.')),
+      );
+      inputCheck = false;
+      return;
+    }
+  }
+
   void _submit() {
     setState(() {
       input = int.tryParse(_controller.text) ?? 0;
+      inputCheck =true;
     });
+    checkInput();
+
   }
 
   String? selectedName;
@@ -109,9 +131,9 @@ class _RouletteState extends State<Roulette> {
   }
 
 
-  void _setChoice(String input) {
+  void _setChoice(String In) {
     setState(() {
-      choice = input;
+      choice = In;
     });
   }
 
@@ -194,24 +216,27 @@ class _RouletteState extends State<Roulette> {
 
 
   void spinWheel() {
-    if (isSpinning) return;
-    final state = AppState();
-    state.sharedCounter = state.sharedCounter - input;
-    final index = Fortune.randomInt(0, items.length);
-    _setCheckup_1();
+    checkInput();
+    if(inputCheck == true) {
+      if (isSpinning) return;
+      final state = AppState();
+      state.sharedCounter = state.sharedCounter - input;
+      final index = Fortune.randomInt(0, items.length);
+      _setCheckup_1();
 
-    selected.add(index);
-    setState(() {
-      isSpinning = true;
-      selectedName = null;
-    });
-    Future.delayed(Duration(seconds: 5), () {
+      selected.add(index);
       setState(() {
-        selectedName = items[index];
-        if(choice!= selectedName)isSpinning = false;
-        if(selectedName == choice) isButtonActive = true;
+        isSpinning = true;
+        selectedName = null;
       });
-    });
+      Future.delayed(Duration(seconds: 5), () {
+        setState(() {
+          selectedName = items[index];
+          if (choice != selectedName) isSpinning = false;
+          if (selectedName == choice) isButtonActive = true;
+        });
+      });
+    }
   }
 
 
