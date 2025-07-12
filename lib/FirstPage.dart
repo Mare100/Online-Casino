@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:online_casino/KenoPage.dart';
 import 'package:online_casino/DicePage.dart';
+import 'package:online_casino/RockPage.dart';
 import 'package:online_casino/RoulettePage.dart';
 import 'package:online_casino/coins.dart';
 import 'package:online_casino/counter.dart';
@@ -119,10 +120,14 @@ class FirstPage extends StatelessWidget {
                     },
                   ),
                   IconButton(
-                    iconSize: 175,
-                    icon:  Icon(Icons.circle),
+                    icon: SizedBox(height: 160,
+                        child: Image.asset(
+                            'assets/images/dice0.jpg')),
                     onPressed: () {
-
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) =>  const RockPage()),
+                      );
                     },
                   ),
                 ],
