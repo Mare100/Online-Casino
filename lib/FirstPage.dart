@@ -121,8 +121,18 @@ class FirstPage extends StatelessWidget {
                   ),
                   IconButton(
                     icon: SizedBox(height: 160,
-                        child: Image.asset(
-                            'assets/images/dice0.jpg')),
+                        child:
+                        Container(
+                            decoration:
+                              BoxDecoration(
+                                  border: Border.all(color: Colors.black,width: 3, )
+                              ),
+                            child:
+                              Padding(padding: EdgeInsets.all(8.0),
+                                child: Image.asset('assets/images/RockLogo.png')
+                              )
+                        ),
+                    ),
                     onPressed: () {
                       Navigator.push(
                         context,
