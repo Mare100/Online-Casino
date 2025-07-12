@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:online_casino/FourthPage.dart';
-import 'package:online_casino/SecondPage.dart';
-import 'package:online_casino/ThirdPage.dart';
+import 'package:online_casino/KenoPage.dart';
+import 'package:online_casino/DicePage.dart';
+import 'package:online_casino/RoulettePage.dart';
 import 'package:online_casino/coins.dart';
 import 'package:online_casino/counter.dart';
 import 'roulette.dart';
@@ -72,23 +72,27 @@ class FirstPage extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
+                  SizedBox(width: 15),
                   IconButton(
-                    iconSize: 175,
-                    icon:  Icon(Icons.casino),
+                    icon: SizedBox(height: 160,
+                        child: Image.asset(
+                            'assets/images/dice0.jpg')),
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => const SecondPage()),
+                        MaterialPageRoute(builder: (context) => const DicePage()),
                       );
                     },
                   ),
                   IconButton(
-                    iconSize: 175,
-                    icon:  Icon(Icons.casino),
+
+                    icon: SizedBox(height: 175,
+                        child: Image.asset(
+                            'assets/images/rad.png')),
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) =>  const ThirdPage()),
+                        MaterialPageRoute(builder: (context) =>  const RoulettePage()),
                       );
                     },
                   ),
@@ -102,19 +106,21 @@ class FirstPage extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
+                  SizedBox(width: 15),
                   IconButton(
-                    iconSize: 175,
-                    icon:  Icon(Icons.casino),
+                    icon: SizedBox(height: 160,
+                        child: Image.asset(
+                            'assets/images/Keno.png')),
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) =>  const FourthPage()),
+                        MaterialPageRoute(builder: (context) =>  const KenoPage()),
                       );
                     },
                   ),
                   IconButton(
                     iconSize: 175,
-                    icon:  Icon(Icons.casino),
+                    icon:  Icon(Icons.circle),
                     onPressed: () {
 
                     },
