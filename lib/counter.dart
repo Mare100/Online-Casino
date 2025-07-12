@@ -30,7 +30,7 @@ class _CounterState extends State<Counter> {
   }
   Widget count(){
     final state = new AppState();
-    return Text('${state.sharedCounter}');
+    return Text('${state.sharedCounter}', style: TextStyle(fontFamily: "KirangHaerang"),);
   }
 
   @override

@@ -1,4 +1,4 @@
-
+import 'coins.dart';
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'appState.dart';
@@ -270,10 +270,9 @@ class _RockState extends State<Rock> {
               );
             },
           ),
-          title: const Text('Schere Stein Papier', style: TextStyle(fontSize: 28, fontFamily: "Pacifico"),),
+          title: const Text('Schere Stein Papier', style: TextStyle(fontSize: 26, fontFamily: "Pacifico"),),
           actions: <Widget>[
-            Icon(Icons.currency_bitcoin),
-            Text("${state.sharedCounter}"),
+            Coins(),
             SizedBox(width: 20,)
           ],),
         body:

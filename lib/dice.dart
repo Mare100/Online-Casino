@@ -1,5 +1,6 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:online_casino/coins.dart';
 import 'appState.dart';
 import 'package:online_casino/FirstPage.dart';
 import 'storageHelper.dart';
@@ -367,8 +368,7 @@ class _DiceRollerState extends State<DiceRoller> {
           ),
           title: const Text('Würfeln', style: TextStyle(fontSize: 30, fontFamily: "Pacifico"),),
           actions: <Widget>[
-            Icon(Icons.currency_bitcoin),
-            Text("${state.sharedCounter}"),
+            Coins(),
             SizedBox(width: 20,)
           ],),
         body:

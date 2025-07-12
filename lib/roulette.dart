@@ -1,4 +1,4 @@
-
+import 'coins.dart';
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_fortune_wheel/flutter_fortune_wheel.dart';
@@ -260,8 +260,7 @@ class _RouletteState extends State<Roulette> {
         ),
         title: const Text('Roulette', style: TextStyle(fontSize: 30, fontFamily: "Pacifico"),),
         actions: <Widget>[
-          Icon(Icons.currency_bitcoin),
-          Text("${state.sharedCounter}"),
+          Coins(),
           SizedBox(width: 20,)
         ],),
       body: Column(

@@ -1,4 +1,4 @@
-
+import 'coins.dart';
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'dart:async';
@@ -231,8 +231,7 @@ class _KenoState extends State<Keno> {
         ),
         title: const Text('Keno', style: TextStyle(fontSize: 30, fontFamily: "Pacifico"),),
         actions: <Widget>[
-          Icon(Icons.currency_bitcoin),
-          Text("${state.sharedCounter}"),
+          Coins(),
           SizedBox(width: 20)
         ],
       ),

@@ -22,9 +22,11 @@ class Coins extends StatelessWidget {
           Icons.currency_bitcoin,
           size: 35,
         ),
-        Text('${state.sharedCounter}'),
+        Text('${state.sharedCounter}' ,style: TextStyle(fontSize: 20,fontFamily: "Pacifico"), ),
       ]
     );
 
   }
 }
+
+
