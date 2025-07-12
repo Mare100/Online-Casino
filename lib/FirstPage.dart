@@ -12,24 +12,36 @@ import 'storageHelper.dart';
 
 enum SampleItem { itemOne, itemTwo, itemThree }
 
-class FirstPage extends StatelessWidget {
+class FirstPage extends StatefulWidget {
   const FirstPage({super.key});
 
   @override
+  State<FirstPage> createState() => _FirstPageState();
+}
+class _FirstPageState extends State<FirstPage> {
+
+  void initState() {
+    super.initState();
+    _loadCoinsOnStartup();
+  }
+
+  Future<void> _loadCoinsOnStartup() async {
+    await StorageHelper.loadCounter(); // Coins aus SharedPreferences oder Datei laden
+    setState(() {}); // UI neu bauen, damit Coins korrekt angezeigt werden
+  }
+
+  @override
   Widget build(BuildContext context) {
-
-      StorageHelper.loadCounter();
-
-
     return Scaffold(
       appBar: AppBar(
-          //centerTitle: true,
-          title: const Text('Online Casino', style: TextStyle(fontSize: 30, fontFamily: "Pacifico"),),
-          toolbarHeight: 100,
-          actions: <Widget>[
-            Coins(),
-            SizedBox(width: 20,)
-          ],),
+        title: const Text('Online Casino',
+            style: TextStyle(fontSize: 30, fontFamily: "Pacifico")),
+        toolbarHeight: 100,
+        actions: <Widget>[
+          Coins(), // Coins-Widget zeigt aktuellen Stand
+          const SizedBox(width: 20),
+        ],
+      ),
           drawer:
             SizedBox(width: 205,
             child: Drawer(

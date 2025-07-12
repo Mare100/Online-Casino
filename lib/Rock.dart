@@ -294,7 +294,7 @@ class _RockState extends State<Rock> {
 
                 } : null,
 
-                child: const Text('Play', style: TextStyle(fontFamily: "VarelaRound"),),
+                child: const Text('Play    ', style: TextStyle(fontFamily: "VarelaRound"), textAlign: TextAlign.center,),
               ),
 //Text('Current number = $currentDiceRoll!'),
               cashIn(),
