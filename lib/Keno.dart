@@ -89,14 +89,14 @@ class _KenoState extends State<Keno> {
 
       if (input1 < 1 || input1 > 70 || input2 < 1 || input2 > 70) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Bitte geben Sie Zahlen zwischen 1 und 70 ein.')),
+          SnackBar(content: Text('Bitte geben Sie Zahlen zwischen 1 und 70 ein.', style: TextStyle(fontFamily: "VarelaRound"),)),
         );
         return;
       }
 
       if (input <= 0) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Bitte geben Sie einen gültigen Einsatz ein.')),
+          SnackBar(content: Text('Bitte geben Sie einen gültigen Einsatz ein.', style: TextStyle(fontFamily: "VarelaRound"),)),
         );
         return;
       }
@@ -107,7 +107,7 @@ class _KenoState extends State<Keno> {
 
   Widget printGezogeneZahlen() {
     return Text(
-      style: TextStyle(fontSize: 18),
+      style: TextStyle(fontSize: 18, fontFamily: "VarelaRound"),
       'Gezogene Zahlen:\n${gezogeneZahlen.join(', ')}\n\nGewinnstufe:  $win',
 
      );
@@ -135,7 +135,7 @@ class _KenoState extends State<Keno> {
                   StorageHelper.saveCounter();
                 });
               } : null,
-              child: const Text('Cash In'),
+              child: const Text('Cash In', style: TextStyle(fontFamily: "VarelaRound"),),
             ),
           ],
         ));
@@ -184,12 +184,12 @@ class _KenoState extends State<Keno> {
                   children: [
                     TextField(
                       controller: _controller,
-                      decoration: InputDecoration(labelText: 'Wie viel setzt du?'),
+                      decoration: InputDecoration(labelText: 'Wie viel setzt du?',),
                     ),
                     SizedBox(height: 20),
                     ElevatedButton(
                       onPressed: _submit,
-                      child: Text('Submit'),
+                      child: Text('Submit', style: TextStyle(fontFamily: "VarelaRound"),),
                     ),
                     SizedBox(height: 20),
                     ElevatedButton(
@@ -197,7 +197,7 @@ class _KenoState extends State<Keno> {
                         ? () {
                           generate();
                           } : null,
-                      child: Text('Generate'),
+                      child: Text('Generate', style: TextStyle(fontFamily: "VarelaRound"),),
                     ),
                     SizedBox(height: 20),
 
@@ -229,7 +229,7 @@ class _KenoState extends State<Keno> {
             );
           },
         ),
-        title: const Text('Second Page'),
+        title: const Text('Keno', style: TextStyle(fontSize: 30, fontFamily: "Pacifico"),),
         actions: <Widget>[
           Icon(Icons.currency_bitcoin),
           Text("${state.sharedCounter}"),

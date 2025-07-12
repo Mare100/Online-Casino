@@ -24,7 +24,7 @@ class FirstPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
           //centerTitle: true,
-          title: const Text('Online Casino', style: TextStyle(fontSize: 30),),
+          title: const Text('Online Casino', style: TextStyle(fontSize: 30, fontFamily: "Pacifico"),),
           toolbarHeight: 100,
           actions: <Widget>[
             Coins(),
@@ -43,18 +43,18 @@ class FirstPage extends StatelessWidget {
                         color: Color(0xFFaf7ac5),
                        ),
                         child: Text('Einstellungen',
-                          style: TextStyle(fontSize: 25),),
+                          style: TextStyle(fontSize: 25, fontFamily: "VarelaRound"),),
                       ),
                   ),
 
             ListTile(
-                    title: const Text('LOG IN'),
+                    title: const Text('LOG IN', style: TextStyle(fontFamily: "VarelaRound"),),
                     onTap: () {
 
                     },
                   ),
                   ListTile(
-                    title: const Text('Einstellungen'),
+                    title: const Text('Coins', style: TextStyle(fontFamily: "VarelaRound"),),
                     onTap: () {
                       // Update the state of the app.
                       // ...
@@ -74,6 +74,7 @@ class FirstPage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   SizedBox(width: 15),
+                  Column(children: [
                   IconButton(
                     icon: SizedBox(height: 160,
                         child: Image.asset(
@@ -85,6 +86,8 @@ class FirstPage extends StatelessWidget {
                       );
                     },
                   ),
+                    const Text('Würfeln\n   ', style: TextStyle(fontSize: 30, fontFamily: "Pacifico" ), textAlign: TextAlign.center,),],),
+                  Column(children: [
                   IconButton(
 
                     icon: SizedBox(height: 175,
@@ -97,17 +100,20 @@ class FirstPage extends StatelessWidget {
                       );
                     },
                   ),
+                    const Text('Roulette\n   ', style: TextStyle(fontSize: 30, fontFamily: "Pacifico" ), textAlign: TextAlign.center,),
+                  ],)
                 ],
               ),
               const SizedBox(
                 width: 200.0,
-                height: 80.0,
+                height: 40.0,
 
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   SizedBox(width: 15),
+                  Column(children: [
                   IconButton(
                     icon: SizedBox(height: 160,
                         child: Image.asset(
@@ -119,18 +125,24 @@ class FirstPage extends StatelessWidget {
                       );
                     },
                   ),
-                  IconButton(
-                    icon: SizedBox(height: 160,
-                        child:
-                         Image.asset('assets/images/RockLogo.png')
+                    const Text('Keno Lotto\n   ', style: TextStyle(fontSize: 30, fontFamily: "Pacifico" ), textAlign: TextAlign.center,),
+                  ],),
+                  Column( children: [
+                    IconButton(
+                      icon: SizedBox(height: 160,
+                          child:
+                           Image.asset('assets/images/RockLogo.png')
+                      ),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) =>  const RockPage()),
+                        );
+                      },
                     ),
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) =>  const RockPage()),
-                      );
-                    },
-                  ),
+                    const Text('Schere Stein \n Papier', style: TextStyle(fontSize: 30, fontFamily: "Pacifico" ), textAlign: TextAlign.center,),
+                  ]
+                  )
                 ],
               )
 

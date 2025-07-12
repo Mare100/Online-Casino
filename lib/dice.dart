@@ -44,21 +44,21 @@ class _DiceRollerState extends State<DiceRoller> {
     setState(() {
       if (choice == 0 && input<= 0) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Bitte wählen sie eine Zahl auf die Sie setzen und geben Sie einen gültigen Einsatz an')),
+          SnackBar(content: Text('Bitte wählen sie eine Zahl auf die Sie setzen und geben Sie einen gültigen Einsatz an', style: TextStyle(fontFamily: "VarelaRound"),)),
         );
         return;
       }
 
       if (choice == 0) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Bitte wählen sie eine Zahl auf die Sie setzen')),
+          SnackBar(content: Text('Bitte wählen sie eine Zahl auf die Sie setzen', style: TextStyle(fontFamily: "VarelaRound"),)),
         );
         return;
       }
 
       if (input <= 0) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Bitte geben Sie einen gültigen Einsatz ein.')),
+          SnackBar(content: Text('Bitte geben Sie einen gültigen Einsatz ein.', style: TextStyle(fontFamily: "VarelaRound"),)),
         );
         return;
       }
@@ -150,7 +150,7 @@ class _DiceRollerState extends State<DiceRoller> {
                       });
                     } : null,
 
-                    child: const Text('Cash In'),
+                    child: const Text('Cash In', style: TextStyle(fontFamily: "VarelaRound"),),
                   ),
 
                 ],
@@ -178,12 +178,12 @@ class _DiceRollerState extends State<DiceRoller> {
                         TextField(
                           controller: _controller,
                           decoration: InputDecoration(
-                              labelText: 'Wie viel setzt du?'),
+                              labelText: 'Wie viel setzt du?', ),
                         ),
                         SizedBox(height: 20),
                         ElevatedButton(
                           onPressed: _submit,
-                          child: Text('Submit'),
+                          child: Text('Submit', style: TextStyle(fontFamily: "VarelaRound"),),
                         ),
                         SizedBox(height: 20),
                       ]))
@@ -209,7 +209,7 @@ class _DiceRollerState extends State<DiceRoller> {
   Widget diceButtons() {
     return
       Column(children: [
-        Text("Wähle eine Zahl auf die du dein Geld setzt"),
+        Text("Wähle eine Zahl auf die du dein Geld setzt", style: TextStyle(fontFamily: "VarelaRound"),),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -365,7 +365,7 @@ class _DiceRollerState extends State<DiceRoller> {
               );
             },
           ),
-          title: const Text('Second Page'),
+          title: const Text('Würfeln', style: TextStyle(fontSize: 30, fontFamily: "Pacifico"),),
           actions: <Widget>[
             Icon(Icons.currency_bitcoin),
             Text("${state.sharedCounter}"),
@@ -389,7 +389,7 @@ class _DiceRollerState extends State<DiceRoller> {
 
                 } : null,
 
-                child: const Text('Role Dice'),
+                child: const Text('Role Dice', style: TextStyle(fontFamily: "VarelaRound"),),
               ),
 //Text('Current number = $currentDiceRoll!'),
               cashIn(),

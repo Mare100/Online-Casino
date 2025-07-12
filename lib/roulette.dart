@@ -38,7 +38,7 @@ class _RouletteState extends State<Roulette> {
   void checkInput(){
     if (choice == "" ) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Bitte wählen Sie eine Farbe')),
+        SnackBar(content: Text('Bitte wählen Sie eine Farbe', style: TextStyle(fontFamily: "VarelaRound"),)),
       );
       inputCheck = false;
       return;
@@ -46,7 +46,7 @@ class _RouletteState extends State<Roulette> {
 
     if (input <= 0) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Bitte geben Sie einen gültigen Einsatz ein und klicken anschließend auf Submit.')),
+        SnackBar(content: Text('Bitte geben Sie einen gültigen Einsatz ein und klicken anschließend auf Submit.', style: TextStyle(fontFamily: "VarelaRound"),)),
       );
       inputCheck = false;
       return;
@@ -89,7 +89,7 @@ class _RouletteState extends State<Roulette> {
   Widget chooseColor() {
     return
       Column(children: [
-        Text("Wähle eine Farbe auf die du dein Geld setzt"),
+        Text("Wähle eine Farbe auf die du dein Geld setzt", style: TextStyle(fontFamily: "VarelaRound"),),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -156,12 +156,12 @@ class _RouletteState extends State<Roulette> {
                         TextField(
                           controller: _controller,
                           decoration: InputDecoration(
-                              labelText: 'Wie viel setzt du?'),
+                              labelText: 'Wie viel setzt du?',),
                         ),
                         SizedBox(height: 20),
                         ElevatedButton(
                           onPressed: _submit,
-                          child: Text('Submit'),
+                          child: Text('Submit', style: TextStyle(fontFamily: "VarelaRound"),),
                         ),
                         SizedBox(height: 20),
                       ]))
@@ -204,7 +204,7 @@ class _RouletteState extends State<Roulette> {
                 } : null,
 
 
-                child: const Text('Cash In'),
+                child: const Text('Cash In', style: TextStyle(fontFamily: "VarelaRound"),),
               ),
 
             ],
@@ -258,7 +258,7 @@ class _RouletteState extends State<Roulette> {
             );
           },
         ),
-        title: const Text('Second Page'),
+        title: const Text('Roulette', style: TextStyle(fontSize: 30, fontFamily: "Pacifico"),),
         actions: <Widget>[
           Icon(Icons.currency_bitcoin),
           Text("${state.sharedCounter}"),
@@ -284,7 +284,7 @@ class _RouletteState extends State<Roulette> {
           ),
           ElevatedButton(
             onPressed: isSpinning ? null : spinWheel,
-            child: Text(isSpinning ? 'Dreht...' : 'Drehen'),//KI
+            child: Text(isSpinning ? 'Dreht...' : 'Drehen', style: TextStyle(fontFamily: "VarelaRound"),),//KI
           ),
           SizedBox(height: 20),
           cashIn(),

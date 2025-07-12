@@ -38,21 +38,21 @@ class _RockState extends State<Rock> {
     setState(() {
       if (choice == 0 && input<= 0) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Bitte wählen sie eine Zahl auf die Sie setzen und geben Sie einen gültigen Einsatz an')),
+          SnackBar(content: Text('Bitte wählen sie eine Zahl auf die Sie setzen und geben Sie einen gültigen Einsatz an', style: TextStyle(fontFamily: "VarelaRound"),)),
         );
         return;
       }
 
       if (choice == 0) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Bitte wählen sie eine Zahl auf die Sie setzen')),
+          SnackBar(content: Text('Bitte wählen sie eine Zahl auf die Sie setzen', style: TextStyle(fontFamily: "VarelaRound"),)),
         );
         return;
       }
 
       if (input <= 0) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Bitte geben Sie einen gültigen Einsatz ein.')),
+          SnackBar(content: Text('Bitte geben Sie einen gültigen Einsatz ein.', style: TextStyle(fontFamily: "VarelaRound"),)),
         );
         return;
       }
@@ -127,7 +127,7 @@ class _RockState extends State<Rock> {
                   });
                 } : null,
 
-                child: const Text('Cash In'),
+                child: const Text('Cash In', style: TextStyle(fontFamily: "VarelaRound"),),
               ),
 
             ],
@@ -177,7 +177,7 @@ class _RockState extends State<Rock> {
   Widget diceButtons() {
     return
       Column(children: [
-        Text("Wähle eine Zahl auf die du dein Geld setzt"),
+        Text("Wähle eine Zahl auf die du dein Geld setzt", style: TextStyle(fontFamily: "VarelaRound"),),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -270,7 +270,7 @@ class _RockState extends State<Rock> {
               );
             },
           ),
-          title: const Text('Second Page'),
+          title: const Text('Schere Stein Papier', style: TextStyle(fontSize: 28, fontFamily: "Pacifico"),),
           actions: <Widget>[
             Icon(Icons.currency_bitcoin),
             Text("${state.sharedCounter}"),
@@ -294,7 +294,7 @@ class _RockState extends State<Rock> {
 
                 } : null,
 
-                child: const Text('Role Dice'),
+                child: const Text('Play', style: TextStyle(fontFamily: "VarelaRound"),),
               ),
 //Text('Current number = $currentDiceRoll!'),
               cashIn(),
