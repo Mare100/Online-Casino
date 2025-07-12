@@ -1,11 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:online_casino/FirstPage.dart';
-import 'package:online_casino/counter.dart';
-import 'package:online_casino/input.dart';
-import 'package:online_casino/roulette.dart';
-import 'coins.dart';
-import 'roulette.dart';
-import 'Keno.dart';
+import 'package:online_casino/Rock.dart';
 
 class RockPage extends StatelessWidget {
   const RockPage({super.key});
@@ -17,7 +11,7 @@ class RockPage extends StatelessWidget {
 
       body: Center(
         child:
-        Keno(),
+        Rock(),
 
       ),
     );
