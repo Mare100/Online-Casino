@@ -7,8 +7,8 @@ import 'coins.dart';
 import 'roulette.dart';
 import 'Keno.dart';
 
-class FourthPage extends StatelessWidget {
-  const FourthPage({super.key});
+class KenoPage extends StatelessWidget {
+  const KenoPage({super.key});
 
   @override
   Widget build(BuildContext context) {

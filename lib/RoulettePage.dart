@@ -2,22 +2,23 @@ import 'package:flutter/material.dart';
 import 'package:online_casino/FirstPage.dart';
 import 'package:online_casino/counter.dart';
 import 'package:online_casino/input.dart';
-import 'dice.dart';
+import 'package:online_casino/roulette.dart';
 import 'coins.dart';
+import 'roulette.dart';
 
-class SecondPage extends StatelessWidget {
-  const SecondPage({super.key});
+class RoulettePage extends StatelessWidget {
+  const RoulettePage({super.key});
 
   @override
   Widget build(BuildContext context) {
 
-    return Scaffold(
+  return Scaffold(
 
-      body: Center(
-        child:
-        DiceRoller(),
+  body: Center(
+  child:
+  Roulette(),
 
-      ),
-    );
+  ),
+  );
   }
-}
+  }
