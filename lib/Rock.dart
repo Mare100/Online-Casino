@@ -73,7 +73,7 @@ class _RockState extends State<Rock> {
   }*/
 
 
-  void roleDice() { // erstellt Zufallszahl 1-6 für den Würfel und zieht einsatz voM Vermögen ab
+  void play() { // erstellt Zufallszahl 1-6 für den Würfel und zieht einsatz voM Vermögen ab
     final state = AppState();
     checkInput();
     if (inputCheck) {
@@ -288,7 +288,7 @@ class _RockState extends State<Rock> {
               ElevatedButton(
                 onPressed: isButtonActiveRole
                     ? () {
-                  roleDice();
+                  play();
                   //setColorBack();
                   setState(() {
                     StorageHelper.saveCounter();
