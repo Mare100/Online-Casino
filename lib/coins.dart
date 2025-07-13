@@ -1,6 +1,5 @@
 
 import 'package:flutter/material.dart';
-import 'counter.dart';
 import 'appState.dart';
 import 'storageHelper.dart';
 

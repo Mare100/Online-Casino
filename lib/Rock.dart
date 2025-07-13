@@ -83,6 +83,7 @@ class _RockState extends State<Rock> {
           StorageHelper.saveCounter(); // persistente Datenspeicherung
           if (currentDiceRoll == choice && checkup != 0) isButtonActiveCash = true; //Aktiviert Cash IN Button
           if (currentDiceRoll == choice && checkup != 0) isButtonActiveRole = false;// Deaktiviert Role Dice Button
+          checkDraw();
         });
         _setCheckup_1();
 
@@ -123,7 +124,7 @@ class _RockState extends State<Rock> {
                   setState(() {
                     StorageHelper.saveCounter();
                     state.sharedCounter = state.sharedCounter +
-                        input * 3; // Coins Counter erhöhen
+                        input * 2; // Coins Counter erhöhen
                     isButtonActiveCash = false; //Button deaktivieren, damit nur 1 mal Coins eingelöst werden können;
                     currentDiceRoll = 0;
                     isButtonActiveRole = true;
@@ -175,6 +176,20 @@ class _RockState extends State<Rock> {
   }
 
 
+  void checkDraw(){
+    final state = AppState();
+
+    if(choice ==2 && currentDiceRoll ==3){
+      state.sharedCounter = state.sharedCounter + input;
+    }
+    if(choice ==3 && currentDiceRoll ==1){
+      state.sharedCounter = state.sharedCounter + input;
+    }
+    if(choice ==1 && currentDiceRoll ==2){
+      state.sharedCounter = state.sharedCounter + input;
+    }
+  }
+
 
 
   Widget diceButtons() {
@@ -189,7 +204,7 @@ class _RockState extends State<Rock> {
                   child: Image.asset(
                       'assets/images/rock.png', color: _iconColor1)),
               onPressed: () {
-                _setChoice(1);
+                _setChoice(2);
                 _setCheckup_0();
                 setState(() {
                   _iconColor1 = Color(0xFFd0cae4);
@@ -204,7 +219,7 @@ class _RockState extends State<Rock> {
                   child: Image.asset(
                       'assets/images/paper.png', color: _iconColor2)),
               onPressed: () {
-                _setChoice(2);
+                _setChoice(1);
                 _setCheckup_0();
                 setState(() {
                   _iconColor2 = Color(0xFFd0cae4);
@@ -219,7 +234,7 @@ class _RockState extends State<Rock> {
                   child: Image.asset(
                       'assets/images/scissors.png', color: _iconColor3)),
               onPressed: () {
-                _setChoice(3);
+                _setChoice(1);
                 _setCheckup_0();
                 setState(() {
                   _iconColor3 = Color(0xFFd0cae4);

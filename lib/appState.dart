@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 
 class AppState {
   static final AppState _instance = AppState._internal();
