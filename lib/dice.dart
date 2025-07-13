@@ -1,3 +1,5 @@
+//Gebaut von Marc
+
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:online_casino/coins.dart';
@@ -17,7 +19,7 @@ class DiceRoller extends StatefulWidget {
 }
 
 class _DiceRollerState extends State<DiceRoller> {
-  int currentDiceRoll = 0;
+  int currentDiceRoll = 0; // ZUfallszahl
   int choice = 0;
   bool isButtonActiveCash = false;
   bool isButtonActiveRole = true;
@@ -35,7 +37,7 @@ class _DiceRollerState extends State<DiceRoller> {
   final TextEditingController _controller = TextEditingController();
   int input = 0;
 
-  void _submit() { //Verarbeitet die eingaben
+  void _submit() { //Verarbeitet die Eingaben
     setState(() {
       input = int.tryParse(_controller.text) ?? 0;
       checkInput();
@@ -78,13 +80,13 @@ class _DiceRollerState extends State<DiceRoller> {
       return Text("du hast $input gesetzt");
     }
   }*/
-  void randomize(){
+  void randomize(){ // generiert Zufallzahl von 1-6
     setState(() {
       currentDiceRoll = randomizer.nextInt(3) +1;//erstellt Zufallszahl 1-6 für den Würfel
     });
   }
 
-  void reduceCoins(){
+  void reduceCoins(){ // Zieht gesteztes Geld ab
     final state = AppState();
     setState(() {
       state.sharedCounter = state.sharedCounter - input;//zieht einsatz voM Vermögen ab
@@ -133,7 +135,7 @@ class _DiceRollerState extends State<DiceRoller> {
   }
 
 
-  Widget show() {
+  Widget show() { // zeigt die Gewürfelte Zahl an (das richtige Bild)
     if (currentDiceRoll == 0) {
       return SizedBox(
           height: 200, child: Image.asset('assets/images/dice5.png'));//Startwert
@@ -166,7 +168,7 @@ class _DiceRollerState extends State<DiceRoller> {
     }*/
   }
 
-  Widget cashIn() {
+  Widget cashIn() {// Button um Geld einzusammeln bei Gewinn
     final state = AppState();
 
 
@@ -178,7 +180,7 @@ class _DiceRollerState extends State<DiceRoller> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   ElevatedButton(
-                    onPressed: isButtonActiveCash
+                    onPressed: isButtonActiveCash //on pressed Methodde wird nur ausgeführt wenn diese Varaible true ist
                         ? () {
                       setState(() {
                         StorageHelper.saveCounter();
@@ -198,7 +200,7 @@ class _DiceRollerState extends State<DiceRoller> {
 
   }
 
-  Widget inputForm() {
+  Widget inputForm() {//Input
     return
 
       Column(
@@ -246,7 +248,7 @@ class _DiceRollerState extends State<DiceRoller> {
   }
 
 
-  Widget diceButtons() {
+  Widget diceButtons() {// Buttons um zu wählen auf welche Zahl gesetzt wird
     return
       Column(children: [
         Text("Wähle eine Zahl auf die du dein Geld setzt", style: TextStyle(fontFamily: "VarelaRound"),),
@@ -261,9 +263,9 @@ class _DiceRollerState extends State<DiceRoller> {
                 _setChoice(1);
                 _setCheckup_0();
                 setState(() {
-                  _iconColor1 = Colors.grey;
+                  _iconColor1 = Colors.grey;// die gewählte Zahl wird grau
 
-                  _iconColor2 = Colors.black;
+                  _iconColor2 = Colors.black;// der rest wird schwarz
                   _iconColor3 = Colors.black;
                   _iconColor4 = Colors.black;
                   _iconColor5 = Colors.black;
@@ -390,7 +392,7 @@ class _DiceRollerState extends State<DiceRoller> {
 
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) {// Baut die GUI
     final state = AppState();
 
     return Scaffold(

@@ -1,3 +1,5 @@
+//Gebaut von Marc
+
 import 'package:flutter/material.dart';
 
 import 'dice.dart';
@@ -12,7 +14,7 @@ class DicePage extends StatelessWidget {
 
       body: Center(
         child:
-        DiceRoller(),
+        DiceRoller(),// führt die BUild von DiceRoller aus
 
       ),
     );

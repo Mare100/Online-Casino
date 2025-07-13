@@ -1,3 +1,4 @@
+//Gebaut von Marc
 
 import 'package:flutter/material.dart';
 import 'appState.dart';
@@ -10,7 +11,7 @@ class Coins extends StatelessWidget {
 
   @override
 
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) { // Widget zum Anzeigen des Coins Vermögens
     StorageHelper.loadCounter();
 
     final state = AppState();

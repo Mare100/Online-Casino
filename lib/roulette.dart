@@ -1,3 +1,5 @@
+//Gebaut von Marc
+
 import 'coins.dart';
 import 'dart:async';
 import 'package:flutter/material.dart';
@@ -20,7 +22,7 @@ class _RouletteState extends State<Roulette> {
   bool inputCheck = false;
 
 
-  final StreamController<int> selected = StreamController<int>();
+  final StreamController<int> selected = StreamController<int>();// LIste der möglichen Ergebnisse
   final List<String> items = [
     '0',
     '1',
@@ -35,7 +37,7 @@ class _RouletteState extends State<Roulette> {
   final TextEditingController _controller = TextEditingController();
   int input = 0;
 
-  void checkInput(){
+  void checkInput(){// Checkt ob Input korrekt ist
     if (choice == "" ) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('Bitte wählen Sie eine Farbe', style: TextStyle(fontFamily: "VarelaRound"),)),
@@ -53,7 +55,7 @@ class _RouletteState extends State<Roulette> {
     }
   }
 
-  void _submit() {
+  void _submit() {// submittet INput
     setState(() {
       input = int.tryParse(_controller.text) ?? 0;
       inputCheck =true;
@@ -86,7 +88,7 @@ class _RouletteState extends State<Roulette> {
   int color2 = 0;
 
 
-  Widget chooseColor() {
+  Widget chooseColor() {// Buttons um auf eine Farbe setzen zu können
     return
       Column(children: [
         Text("Wähle eine Farbe auf die du dein Geld setzt", style: TextStyle(fontFamily: "VarelaRound"),),
@@ -95,14 +97,14 @@ class _RouletteState extends State<Roulette> {
           children: [
             Container(
               decoration:  BoxDecoration(
-                  border: Border.all(color: Color(color1))
+                  border: Border.all(color: Color(color1))// macht den Rand bei klickt schwarz
               ),
               child:IconButton(
                 iconSize: 50,
                 icon: Icon(Icons.circle, color: Color(0xFFd0cae4),),
                 onPressed: () {
-                  _setChoice("0");
-                  color1 = 0xFF000000;
+                  _setChoice("0");// wählt die Rosa Farbe
+                  color1 = 0xFF000000;//macht den Rand bei klickt schwarz
                   color2 =0;
                   _setCheckup_0();
                 },
@@ -138,7 +140,7 @@ class _RouletteState extends State<Roulette> {
   }
 
 
-  Widget inputForm() {
+  Widget inputForm() {// Input Form
     return
 
       Column(
@@ -172,7 +174,7 @@ class _RouletteState extends State<Roulette> {
       );
   }
 
-  Widget cashIn() {
+  Widget cashIn() {// Cash In Button
     final state = AppState();
 
     /*if (choice == "") {
@@ -190,7 +192,7 @@ class _RouletteState extends State<Roulette> {
             children: [
               ElevatedButton(
                 onPressed:
-                isButtonActive
+                isButtonActive// on pressed Methodde wird nur ausgeführt wenn diese Varaible true ist
                     ? () {
                   //setColorBack();
                   setState(() {
@@ -217,7 +219,7 @@ class _RouletteState extends State<Roulette> {
 
   void spinWheel() {
     checkInput();
-    if(inputCheck == true) {
+    if(inputCheck == true) {//spin Methodde wird nur ausgeführt wenn diese Varaible true ist
       if (isSpinning) return;
       final state = AppState();
 
@@ -247,7 +249,7 @@ class _RouletteState extends State<Roulette> {
 
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) { // baut die GUI
 
 
     return Scaffold(

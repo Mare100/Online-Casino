@@ -1,4 +1,4 @@
-
+//Gebaut von Marc
 import 'dart:convert';
 import 'dart:io';
 import 'package:path_provider/path_provider.dart';
@@ -15,13 +15,13 @@ class StorageHelper {
     return File('$path/app_state.json');
   }
 
-  static Future<void> saveCounter() async {
+  static Future<void> saveCounter() async {// speichert den Coins Counter
     final file = await _localFile;
     final data = {'sharedCounter': AppState().sharedCounter};
     await file.writeAsString(jsonEncode(data));
   }
 
-  static Future<void> loadCounter() async {
+  static Future<void> loadCounter() async { //lädt den Coins Counter
     try {
       final file = await _localFile;
       final contents = await file.readAsString();

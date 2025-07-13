@@ -1,3 +1,5 @@
+//Gebaut von Marc
+
 import 'package:flutter/material.dart';
 import 'package:online_casino/KenoPage.dart';
 import 'package:online_casino/DicePage.dart';
@@ -18,7 +20,7 @@ class FirstPage extends StatefulWidget {
 }
 class _FirstPageState extends State<FirstPage> {
 
-  void initState() {
+  void initState() {//Lädt Coins Counter BEI START
     super.initState();
     _loadCoinsOnStartup();
   }
@@ -29,9 +31,9 @@ class _FirstPageState extends State<FirstPage> {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) {// baut GUI
     return Scaffold(
-      appBar: AppBar(
+      appBar: AppBar(// Obere Zeile mit namen der App etc.
         title: const Text('Online Casino',
             style: TextStyle(fontSize: 30, fontFamily: "Pacifico")),
         toolbarHeight: 100,
@@ -85,7 +87,7 @@ class _FirstPageState extends State<FirstPage> {
                 children: <Widget>[
                   SizedBox(width: 15),
                   Column(children: [
-                  IconButton(
+                  IconButton(// Würfel Button
                     icon: SizedBox(height: 160,
                         child: Image.asset(
                             'assets/images/dice0.jpg')),
@@ -98,7 +100,7 @@ class _FirstPageState extends State<FirstPage> {
                   ),
                     const Text('Würfeln\n   ', style: TextStyle(fontSize: 30, fontFamily: "Pacifico" ), textAlign: TextAlign.center,),],),
                   Column(children: [
-                  IconButton(
+                  IconButton(//Roulette Button
 
                     icon: SizedBox(height: 175,
                         child: Image.asset(
@@ -124,7 +126,7 @@ class _FirstPageState extends State<FirstPage> {
                 children: <Widget>[
                   SizedBox(width: 15),
                   Column(children: [
-                  IconButton(
+                  IconButton(                                                                      // KEno Button
                     icon: SizedBox(height: 160,
                         child: Image.asset(
                             'assets/images/Keno.png')),
@@ -138,7 +140,7 @@ class _FirstPageState extends State<FirstPage> {
                     const Text('Keno Lotto\n   ', style: TextStyle(fontSize: 30, fontFamily: "Pacifico" ), textAlign: TextAlign.center,),
                   ],),
                   Column( children: [
-                    IconButton(
+                    IconButton( // Shcere Stein Papier butzon
                       icon: SizedBox(height: 160,
                           child:
                            Image.asset('assets/images/RockLogo.png')
