@@ -220,7 +220,7 @@ class _RouletteState extends State<Roulette> {
     if(inputCheck == true) {
       if (isSpinning) return;
       final state = AppState();
-      state.sharedCounter = state.sharedCounter - input;
+
       final index = Fortune.randomInt(0, items.length);
       _setCheckup_1();
 
@@ -235,6 +235,10 @@ class _RouletteState extends State<Roulette> {
           if (choice != selectedName) isSpinning = false;
           if (selectedName == choice) isButtonActive = true;
         });
+      });
+      setState(() {
+        state.sharedCounter = state.sharedCounter - input;
+        StorageHelper.saveCounter();
       });
     }
   }
