@@ -177,7 +177,7 @@ class _RockState extends State<Rock> {
   Widget diceButtons() {
     return
       Column(children: [
-        Text("Wähle eine Zahl auf die du dein Geld setzt", style: TextStyle(fontFamily: "VarelaRound"),),
+        Text("Wähle Schere Stein oder Papier", style: TextStyle(fontFamily: "VarelaRound"),),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
