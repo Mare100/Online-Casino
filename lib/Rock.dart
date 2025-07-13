@@ -206,7 +206,7 @@ class _RockState extends State<Rock> {
                   child: Image.asset(
                       'assets/images/rock.png', color: _iconColor1)),
               onPressed: () {
-                _setChoice(2);
+                _setChoice(3);
                 _setCheckup_0();
                 setState(() {
                   _iconColor1 = Color(0xFFd0cae4);
@@ -236,7 +236,7 @@ class _RockState extends State<Rock> {
                   child: Image.asset(
                       'assets/images/scissors.png', color: _iconColor3)),
               onPressed: () {
-                _setChoice(3);
+                _setChoice(2);
                 _setCheckup_0();
                 setState(() {
                   _iconColor3 = Color(0xFFd0cae4);
