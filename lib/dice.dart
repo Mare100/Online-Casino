@@ -22,6 +22,7 @@ class _DiceRollerState extends State<DiceRoller> {
   bool isButtonActiveCash = false;
   bool isButtonActiveRole = true;
   int checkup =1;
+  bool inputCheck = false;
 
   Color _iconColor1 = Colors.black;
   Color _iconColor2 = Colors.black;
@@ -63,6 +64,9 @@ class _DiceRollerState extends State<DiceRoller> {
         );
         return;
       }
+      if (choice != 0 && input >= 0){
+        inputCheck =true;
+      }
     });
   }
 
@@ -74,21 +78,56 @@ class _DiceRollerState extends State<DiceRoller> {
       return Text("du hast $input gesetzt");
     }
   }*/
+  void randomize(){
+    setState(() {
+      currentDiceRoll = randomizer.nextInt(3) +1;//erstellt Zufallszahl 1-6 für den Würfel
+    });
+  }
 
+  void reduceCoins(){
+    final state = AppState();
+    setState(() {
+      state.sharedCounter = state.sharedCounter - input;//zieht einsatz voM Vermögen ab
+    });
+
+  }
+
+  void setCashTrue(){
+    setState(() {
+      isButtonActiveCash = true;//Aktiviert Cash IN Button
+    });
+  }
+
+  void setRoleFalse(){
+    setState(() {
+      isButtonActiveRole = false;// Deaktiviert Role Dice Button
+    });
+  }
+
+  bool check(){
+    if (currentDiceRoll == choice && checkup != 0){
+      return true;
+    }else{
+      return false;
+    }
+  }
 
   void roleDice() { // erstellt Zufallszahl 1-6 für den Würfel und zieht einsatz voM Vermögen ab
-    final state = AppState();
+
     checkInput();
     if (input != 0) {
-      if (choice != 0) {
+      if (inputCheck) {
         setState(() {
-          currentDiceRoll = randomizer.nextInt(6) + 1;//erstellt Zufallszahl 1-6 für den Würfel
-          state.sharedCounter = state.sharedCounter - input; //zieht einsatz voM Vermögen ab
+          randomize();
+          reduceCoins();
           StorageHelper.saveCounter(); // persistente Datenspeicherung
-          if (currentDiceRoll == choice && checkup != 0) isButtonActiveCash = true; //Aktiviert Cash IN Button
-          if (currentDiceRoll == choice && checkup != 0) isButtonActiveRole = false;// Deaktiviert Role Dice Button
+          if (check()){
+            setCashTrue();
+            setRoleFalse();
+          }
         });
         _setCheckup_1();
+
       }
     }
   }
