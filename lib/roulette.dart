@@ -131,9 +131,9 @@ class _RouletteState extends State<Roulette> {
   }
 
 
-  void _setChoice(String In) {
+  void _setChoice(String give) {
     setState(() {
-      choice = In;
+      choice = give;
     });
   }
 
@@ -248,7 +248,7 @@ class _RouletteState extends State<Roulette> {
 
   @override
   Widget build(BuildContext context) {
-    final state = AppState();
+
 
     return Scaffold(
       appBar: AppBar(

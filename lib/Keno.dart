@@ -216,7 +216,7 @@ class _KenoState extends State<Keno> {
 
   @override
   Widget build(BuildContext context) {
-    final state = AppState();
+
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
