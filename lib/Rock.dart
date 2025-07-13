@@ -19,6 +19,7 @@ class _RockState extends State<Rock> {
   bool isButtonActiveCash = false;
   bool isButtonActiveRole = true;
   int checkup =1;
+  bool inputCheck = false;
 
   Color? _iconColor1 = null;
   Color? _iconColor2 = null;
@@ -56,6 +57,9 @@ class _RockState extends State<Rock> {
         );
         return;
       }
+      if (choice != 0 && input >= 0){
+        inputCheck =true;
+      }
     });
   }
 
@@ -72,8 +76,7 @@ class _RockState extends State<Rock> {
   void roleDice() { // erstellt Zufallszahl 1-6 für den Würfel und zieht einsatz voM Vermögen ab
     final state = AppState();
     checkInput();
-    if (input != 0) {
-      if (choice != 0) {
+    if (inputCheck) {
         setState(() {
           currentDiceRoll = randomizer.nextInt(3) +1;//erstellt Zufallszahl 1-6 für den Würfel
           state.sharedCounter = state.sharedCounter - input; //zieht einsatz voM Vermögen ab
@@ -82,7 +85,7 @@ class _RockState extends State<Rock> {
           if (currentDiceRoll == choice && checkup != 0) isButtonActiveRole = false;// Deaktiviert Role Dice Button
         });
         _setCheckup_1();
-      }
+
     }
   }
 
