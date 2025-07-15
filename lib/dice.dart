@@ -82,7 +82,7 @@ class _DiceRollerState extends State<DiceRoller> {
   }*/
   void randomize(){ // generiert Zufallzahl von 1-6
     setState(() {
-      currentDiceRoll = randomizer.nextInt(3) +1;//erstellt Zufallszahl 1-6 für den Würfel
+      currentDiceRoll = randomizer.nextInt(6) +1;//erstellt Zufallszahl 1-6 für den Würfel
     });
   }
 
