@@ -34,6 +34,8 @@ class _RockState extends State<Rock> {
     setState(() {
       input = int.tryParse(_controller.text) ?? 0;
       checkInput();
+      isButtonActiveCash =false;
+      isButtonActiveRole =true;
     });
   }
 
