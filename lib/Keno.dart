@@ -102,6 +102,11 @@ class _KenoState extends State<Keno> {
         return;
       }
 
+      setState(() {
+        isButtonActiveCash =false;
+        isButtonActiveGenerate =true;
+      });
+
 
     });
   }
