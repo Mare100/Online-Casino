@@ -59,6 +59,8 @@ class _RouletteState extends State<Roulette> {
     setState(() {
       input = int.tryParse(_controller.text) ?? 0;
       inputCheck =true;
+      isButtonActive =false;
+      isSpinning =false;
     });
     checkInput();
 
